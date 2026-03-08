@@ -1,0 +1,21 @@
+::ng-deep .custom-accordion .p-accordion-header-link {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid var(--surface-border) !important;
+    padding: 1.5rem 1rem !important;
+    font-weight: 600 !important;
+    color: var(--text-color) !important;
+    box-shadow: none !important;
+}
+
+::ng-deep .custom-accordion .p-accordion-content {
+    border: none !important;
+    border-bottom: 1px solid var(--surface-border) !important;
+    background: transparent !important;
+    padding: 0 1rem 1.5rem 1rem !important;
+}
+
+::ng-deep .custom-accordion .p-accordion-tab:last-child .p-accordion-header-link,
+::ng-deep .custom-accordion .p-accordion-tab:last-child .p-accordion-content {
+    border-bottom: none !important;
+}

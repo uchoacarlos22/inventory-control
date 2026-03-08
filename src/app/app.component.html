@@ -1,0 +1,129 @@
+<div class="flex flex-column h-screen bg-gray-50 overflow-hidden font-sans">
+  
+  <div class="flex flex-1 overflow-hidden">
+    <!-- Sidebar -->
+    @if (authFacade.isAuthenticated()) {
+    <aside class="w-16rem bg-white border-right-1 surface-border hidden md:flex flex-column justify-content-between">
+      <!-- Top Area (Logo + Menu) -->
+      <div class="flex flex-column h-full">
+        
+        <!-- Logo -->
+        <div class="flex align-items-center gap-3 p-4 border-bottom-1 surface-border h-5rem shrink-0">
+          <div class="bg-primary text-white border-round flex align-items-center justify-content-center shadow-2" style="width: 34px; height: 34px;">
+            <i class="pi pi-inbox text-lg"></i>
+          </div>
+          <div>
+            <h1 class="m-0 text-sm font-bold text-900 leading-tight">Inventory Pro</h1>
+            <p class="m-0 text-500" style="font-size: 10px;">SaaS Management</p>
+          </div>
+        </div>
+
+        <!-- Scrollable Navigation -->
+        <div class="flex-1 overflow-y-auto py-3 custom-scrollbar">
+          <!-- Main Navigation -->
+          <nav class="flex flex-column px-3 gap-1">
+            @for (item of menuItems; track item.label) {
+              <a [routerLink]="item.routerLink" 
+                 routerLinkActive="bg-indigo-50 text-primary font-bold shadow-sm"
+                 [routerLinkActiveOptions]="item.routerLink === '/dashboard' ? {exact: true} : {exact: false}"
+                 class="flex align-items-center gap-3 px-3 py-2 border-round-lg text-600 hover:surface-hover transition-colors cursor-pointer text-decoration-none font-medium text-xs">
+                <i [class]="item.icon" class="text-base"></i>
+                <span>{{ item.label }}</span>
+              </a>
+            }
+          </nav>
+
+          <!-- System Navigation -->
+          <div class="px-4 py-3 mt-1">
+            <span class="text-400 font-bold uppercase tracking-widest" style="font-size: 9px;">System Settings</span>
+          </div>
+          <nav class="flex flex-column px-3 gap-1">
+            @for (item of systemItems; track item.label) {
+              <a [routerLink]="item.routerLink" 
+                 routerLinkActive="bg-indigo-50 text-primary font-bold shadow-sm"
+                 class="flex align-items-center gap-3 px-3 py-2 border-round-lg text-600 hover:surface-hover transition-colors cursor-pointer text-decoration-none font-medium text-xs">
+                <i [class]="item.icon" class="text-base"></i>
+                <span>{{ item.label }}</span>
+              </a>
+            }
+          </nav>
+        </div>
+      </div>
+
+      <!-- Bottom Area (Profile / Logout) -->
+      <div class="p-3 border-top-1 surface-border shrink-0">
+        <div class="flex align-items-center justify-content-between px-3 py-2 border-round-xl shadow-1 bg-white hover:surface-hover cursor-pointer transition-colors border-1 surface-border" (click)="authFacade.logout()" title="Logout">
+          <div class="flex align-items-center gap-2">
+            <div class="bg-indigo-100 text-primary border-circle flex align-items-center justify-content-center" style="width: 28px; height: 28px">
+              <span class="font-bold" style="font-size: 9px;">AM</span>
+            </div>
+            <div class="overflow-hidden">
+              <span class="block font-bold text-900 text-overflow-ellipsis white-space-nowrap" style="font-size: 11px;">Alex Morgan</span>
+              <span class="block text-400" style="font-size: 9px;">Administrator</span>
+            </div>
+          </div>
+          <i class="pi pi-sign-out text-400 text-xs hover:text-red-500 transition-colors"></i>
+        </div>
+      </div>
+    </aside>
+    }
+
+    <!-- Main Content Area Wrapper -->
+    <div class="flex-1 flex flex-column overflow-hidden">
+      
+      <!-- Topbar -->
+      @if (authFacade.isAuthenticated()) {
+      <header class="bg-white px-5 border-bottom-1 surface-border flex justify-content-between align-items-center h-5rem shrink-0">
+        
+        <!-- Opcional Breadcrumb/Title no Desktop ou Mobile Menu -->
+        <div class="flex align-items-center gap-3">
+          <i class="pi pi-bars text-xl text-600 cursor-pointer md:hidden"></i>
+          <!-- Search -->
+          <span class="p-input-icon-left w-20rem hidden md:block">
+              <i class="pi pi-search text-500"></i>
+              <input pInputText type="text" placeholder="Search inventory, SKU, or orders..." class="w-full border-round-3xl bg-gray-50 border-none px-4 py-2 text-sm text-700" />
+          </span>
+        </div>
+
+        <!-- Right Actions -->
+        <div class="flex align-items-center gap-4">
+          <div class="relative cursor-pointer hover:text-900 text-600 transition-colors">
+              <i class="pi pi-bell text-xl" pBadge value="1" severity="danger"></i>
+          </div>
+          <div class="border-left-2 surface-border h-1rem mx-2"></div>
+          <div class="flex align-items-center gap-2 cursor-pointer bg-orange-100 border-circle w-2rem h-2rem justify-content-center">
+              <i class="pi pi-user text-orange-600"></i>
+          </div>
+        </div>
+      </header>
+      }
+
+      <!-- Router Outlet Content Area -->
+      <main class="flex-1 overflow-auto p-4 md:p-5 fadein animation-duration-400 bg-gray-50">
+        <router-outlet></router-outlet>
+      </main>
+
+    </div>
+  </div>
+
+  <!-- Professional Footer (Full Width) -->
+  @if (authFacade.isAuthenticated()) {
+  <footer class="bg-white px-5 py-3 border-top-1 surface-border flex flex-column md:flex-row justify-content-between align-items-center gap-3 shrink-0">
+    <div class="flex align-items-center gap-2">
+      <span class="text-xs text-500 font-medium">© 2024 Inventory Pro SaaS. All rights reserved.</span>
+      <div class="hidden md:block border-left-1 surface-border h-1rem mx-2"></div>
+      <div class="flex align-items-center gap-2">
+        <div class="w-2 h-2 border-circle bg-green-500 shadow-2 animate-pulse animation-duration-1000" style="width: 8px; height: 8px;"></div>
+        <span class="text-xs text-600 font-semibold tracking-wide">System Operational</span>
+      </div>
+    </div>
+    
+    <div class="flex align-items-center gap-4">
+      <a class="text-xs text-500 hover:text-primary cursor-pointer transition-colors font-medium text-decoration-none">Terms of Service</a>
+      <a class="text-xs text-500 hover:text-primary cursor-pointer transition-colors font-medium text-decoration-none">Privacy Policy</a>
+      <div class="border-left-1 surface-border h-1rem mx-2 hidden md:block"></div>
+      <span class="text-xs text-400 font-bold uppercase tracking-widest">v2.1.0-PRO</span>
+    </div>
+  </footer>
+  }
+</div>

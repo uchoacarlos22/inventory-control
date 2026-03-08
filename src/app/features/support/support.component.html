@@ -1,0 +1,98 @@
+<div class="p-0 font-sans">
+  
+  <div class="flex flex-column mb-5 mt-2">
+    <div class="flex justify-content-between align-items-center mb-4">
+      <div class="text-sm text-500 font-medium mb-3">System / <span class="text-900">Support</span></div>
+    </div>
+    
+    <div>
+      <h1 class="text-3xl font-bold text-900 m-0 mb-2 tracking-tight">Help & Support</h1>
+      <p class="text-600 text-sm m-0">Find answers in our FAQ or contact our specialized support team.</p>
+    </div>
+  </div>
+
+  <div class="grid">
+    
+    <!-- Contact Form (Left) -->
+    <div class="col-12 xl:col-5 flex flex-column gap-4">
+      
+      <div class="surface-card p-5 border-round-2xl shadow-1 bg-white h-full">
+        <div class="flex align-items-center gap-3 mb-5">
+          <div class="bg-indigo-50 border-round-lg flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
+            <i class="pi pi-envelope text-primary text-xl"></i>
+          </div>
+          <h2 class="m-0 text-xl font-bold text-900">Contact Us</h2>
+        </div>
+
+        <p class="text-600 text-sm mb-5 line-height-3">
+          Can't find what you're looking for? Send us a direct message and our team will get back to you within 24 hours.
+        </p>
+
+        <div class="flex flex-column gap-4">
+          <div class="flex flex-column gap-2">
+            <label class="font-medium text-700 text-sm">Subject</label>
+            <input pInputText type="text" [(ngModel)]="contactForm.subject" placeholder="Ex: Billing issue, Bug report..." class="border-round-lg py-2" />
+          </div>
+
+          <div class="flex flex-column gap-2 mb-2">
+            <label class="font-medium text-700 text-sm">Message</label>
+            <textarea pInputTextarea [(ngModel)]="contactForm.message" rows="6" placeholder="Describe how we can help you in detail..." class="border-round-lg py-2" style="resize: none;"></textarea>
+          </div>
+
+          <p-button label="Send Message" icon="pi pi-send" (onClick)="sendMessage()" [disabled]="!contactForm.subject || !contactForm.message" styleClass="w-full border-round-lg font-bold py-3 bg-primary border-none shadow-1"></p-button>
+        </div>
+
+        <div class="mt-6 border-top-1 surface-border pt-4">
+          <span class="block font-bold text-900 mb-2">Direct Contacts</span>
+          <div class="flex align-items-center gap-2 mb-2">
+            <i class="pi pi-phone text-500"></i>
+            <span class="text-600 text-sm">+1 (800) 123-4567</span>
+          </div>
+          <div class="flex align-items-center gap-2">
+            <i class="pi pi-calendar text-500"></i>
+            <span class="text-600 text-sm">Mon-Fri, 9am to 6pm EST</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Accordion (Right) -->
+    <div class="col-12 xl:col-7">
+      <div class="surface-card p-5 border-round-2xl shadow-1 bg-white h-full">
+        <div class="flex align-items-center gap-3 mb-5">
+          <i class="pi pi-comments text-primary text-2xl"></i>
+          <h2 class="m-0 text-xl font-bold text-900">Frequently Asked Questions</h2>
+        </div>
+
+        <p-accordion [multiple]="true" styleClass="mt-3 custom-accordion">
+          
+          <p-accordionTab header="How do I export my sales data?">
+            <p class="m-0 text-600 line-height-3 text-sm">
+              Navigating to the Sales view, you will find an "Export" button on the top right corner of the Sales History table. Clicking it will automatically generate and download a CSV file containing all your filtered transactions.
+            </p>
+          </p-accordionTab>
+          
+          <p-accordionTab header="What happens when a product is marked as 'Out of Stock'?">
+            <p class="m-0 text-600 line-height-3 text-sm">
+              When a product quantity hits zero, it is automatically flagged as Out of Stock in your dashboard. Sales attempts for this product will be blocked unless you explicitly enable backordering in the system settings.
+            </p>
+          </p-accordionTab>
+
+          <p-accordionTab header="Can I add multiple user accounts?">
+            <p class="m-0 text-600 line-height-3 text-sm">
+              Currently, the StockFlow Pro demo environment operates under a single Administrator account. Multi-tenant and role-based access control (RBAC) features are available in the Enterprise subscription tier.
+            </p>
+          </p-accordionTab>
+
+          <p-accordionTab header="How often is the Dashboard statistics updated?">
+            <p class="m-0 text-600 line-height-3 text-sm">
+              Our architecture utilizes Angular Signals to provide reactive, instantaneous updates. Any change made in the sales or inventory views is immediately reflected in the Dashboard without requiring a page reload.
+            </p>
+          </p-accordionTab>
+
+        </p-accordion>
+      </div>
+    </div>
+
+  </div>
+</div>

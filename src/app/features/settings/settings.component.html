@@ -1,0 +1,171 @@
+<div class="p-0 font-sans">
+  
+  <div class="flex flex-column mb-5 mt-2">
+    <div class="flex justify-content-between align-items-center mb-4">
+      <div class="text-sm text-500 font-medium mb-3">System / <span class="text-900">Settings</span></div>
+    </div>
+    
+    <div>
+      <h1 class="text-3xl font-bold text-900 m-0 mb-2 tracking-tight">Settings</h1>
+      <p class="text-600 text-sm m-0">Manage your account preferences and system configurations.</p>
+    </div>
+  </div>
+
+  <div class="grid">
+    <!-- Left Menu -->
+    <div class="col-12 md:col-3">
+      <div class="surface-card p-3 border-round-2xl shadow-1 bg-white flex flex-column gap-2">
+        <a class="p-3 border-round-lg cursor-pointer transition-colors font-medium text-sm flex align-items-center gap-3" 
+           [ngClass]="activeTab === 'profile' ? 'bg-indigo-50 text-primary' : 'text-700 hover:surface-hover'"
+           (click)="activeTab = 'profile'">
+          <i class="pi pi-user text-lg"></i>
+          <span>Profile</span>
+        </a>
+        <a class="p-3 border-round-lg cursor-pointer transition-colors font-medium text-sm flex align-items-center gap-3"
+           [ngClass]="activeTab === 'preferences' ? 'bg-indigo-50 text-primary' : 'text-700 hover:surface-hover'"
+           (click)="activeTab = 'preferences'">
+          <i class="pi pi-cog text-lg"></i>
+          <span>Preferences</span>
+        </a>
+        <a class="p-3 border-round-lg cursor-pointer transition-colors font-medium text-sm flex align-items-center gap-3"
+           [ngClass]="activeTab === 'security' ? 'bg-indigo-50 text-primary' : 'text-700 hover:surface-hover'"
+           (click)="activeTab = 'security'">
+          <i class="pi pi-shield text-lg"></i>
+          <span>Security</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="col-12 md:col-9">
+      <div class="surface-card p-5 border-round-2xl shadow-1 bg-white min-h-full">
+        
+        <!-- Profile Tab -->
+        @if (activeTab === 'profile') {
+          <div class="fadein animation-duration-300">
+            <h2 class="m-0 text-xl font-bold text-900 mb-4">Personal Information</h2>
+            
+            <div class="flex align-items-center gap-4 mb-5">
+              <div class="bg-indigo-100 text-primary border-circle flex align-items-center justify-content-center text-2xl font-bold" style="width: 80px; height: 80px">
+                AM
+              </div>
+              <div>
+                <p-button label="Change Avatar" severity="secondary" [outlined]="true" size="small" styleClass="border-round-lg px-4 py-2 font-semibold text-sm surface-border text-800 bg-gray-50 mb-2"></p-button>
+                <p class="text-500 text-xs m-0">Recommended size: 256x256px. Max 2MB.</p>
+              </div>
+            </div>
+
+            <p-divider styleClass="my-4"></p-divider>
+
+            <div class="grid formgrid p-fluid">
+              <div class="field mb-4 col-12 md:col-6">
+                <label for="firstname" class="font-medium text-700 text-sm block mb-2">First Name</label>
+                <input id="firstname" type="text" pInputText [(ngModel)]="profile.firstName" class="border-round-lg py-2" />
+              </div>
+              <div class="field mb-4 col-12 md:col-6">
+                <label for="lastname" class="font-medium text-700 text-sm block mb-2">Last Name</label>
+                <input id="lastname" type="text" pInputText [(ngModel)]="profile.lastName" class="border-round-lg py-2" />
+              </div>
+              <div class="field mb-4 col-12 md:col-6">
+                <label for="email" class="font-medium text-700 text-sm block mb-2">Email Address</label>
+                <input id="email" type="email" pInputText [(ngModel)]="profile.email" class="border-round-lg py-2" />
+              </div>
+              <div class="field mb-4 col-12 md:col-6">
+                <label for="role" class="font-medium text-700 text-sm block mb-2">Role</label>
+                <input id="role" type="text" pInputText [(ngModel)]="profile.role" [disabled]="true" class="border-round-lg py-2 surface-200 text-600" />
+              </div>
+            </div>
+            
+            <div class="flex justify-content-end mt-4">
+              <p-button label="Save Changes" icon="pi pi-check" (onClick)="saveChanges()" styleClass="border-round-lg font-semibold shadow-1 px-4 bg-primary border-none text-sm py-2"></p-button>
+            </div>
+          </div>
+        }
+
+        <!-- Preferences Tab -->
+        @if (activeTab === 'preferences') {
+          <div class="fadein animation-duration-300">
+            <h2 class="m-0 text-xl font-bold text-900 mb-4">System Preferences</h2>
+            
+            <div class="flex flex-column gap-4 max-w-30rem">
+              <div>
+                <label class="font-medium text-700 text-sm block mb-2">Language</label>
+                <p-dropdown [options]="languages" [(ngModel)]="selectedLanguage" optionLabel="name" styleClass="w-full border-round-lg"></p-dropdown>
+              </div>
+            </div>
+
+            <p-divider styleClass="my-5"></p-divider>
+
+            <h2 class="m-0 text-xl font-bold text-900 mb-4">Notifications</h2>
+            
+            <div class="flex flex-column gap-4">
+              <div class="flex align-items-center justify-content-between">
+                <div>
+                  <span class="block font-medium text-800 mb-1">Email Alerts</span>
+                  <span class="block text-500 text-sm">Receive email notifications for critical stock levels.</span>
+                </div>
+                <p-inputSwitch [(ngModel)]="notifications.emailAlerts"></p-inputSwitch>
+              </div>
+              
+              <div class="flex align-items-center justify-content-between">
+                <div>
+                  <span class="block font-medium text-800 mb-1">Push Notifications</span>
+                  <span class="block text-500 text-sm">Receive browser notifications for new sales.</span>
+                </div>
+                <p-inputSwitch [(ngModel)]="notifications.pushNotifications"></p-inputSwitch>
+              </div>
+
+              <div class="flex align-items-center justify-content-between">
+                <div>
+                  <span class="block font-medium text-800 mb-1">Weekly Reports</span>
+                  <span class="block text-500 text-sm">Get a weekly summary of your inventory performance.</span>
+                </div>
+                <p-inputSwitch [(ngModel)]="notifications.weeklyReports"></p-inputSwitch>
+              </div>
+            </div>
+
+            <div class="flex justify-content-end mt-5">
+              <p-button label="Save Preferences" icon="pi pi-check" (onClick)="saveChanges()" styleClass="border-round-lg font-semibold shadow-1 px-4 bg-primary border-none text-sm py-2"></p-button>
+            </div>
+          </div>
+        }
+
+        <!-- Security Tab -->
+        @if (activeTab === 'security') {
+          <div class="fadein animation-duration-300">
+            <h2 class="m-0 text-xl font-bold text-900 mb-4">Security Settings</h2>
+            
+            <div class="surface-ground border-round-xl p-4 border-1 surface-border mb-5 flex align-items-center justify-content-between">
+              <div>
+                <span class="block font-bold text-800 mb-1">Two-Factor Authentication</span>
+                <span class="block text-600 text-sm">Add an extra layer of security to your account.</span>
+              </div>
+              <p-button label="Enable 2FA" severity="secondary" [outlined]="true" size="small" styleClass="border-round-lg px-4 py-2 font-semibold text-sm surface-border text-800 bg-white"></p-button>
+            </div>
+
+            <h3 class="m-0 text-lg font-bold text-800 mb-3">Change Password</h3>
+            <div class="grid formgrid p-fluid">
+              <div class="field mb-4 col-12 max-w-25rem">
+                <label for="currentpass" class="font-medium text-700 text-sm block mb-2">Current Password</label>
+                <input id="currentpass" type="password" pInputText class="border-round-lg py-2" />
+              </div>
+              <div class="field mb-4 col-12 max-w-25rem">
+                <label for="newpass" class="font-medium text-700 text-sm block mb-2">New Password</label>
+                <input id="newpass" type="password" pInputText class="border-round-lg py-2" />
+              </div>
+              <div class="field mb-4 col-12 max-w-25rem">
+                <label for="confirmpass" class="font-medium text-700 text-sm block mb-2">Confirm New Password</label>
+                <input id="confirmpass" type="password" pInputText class="border-round-lg py-2" />
+              </div>
+            </div>
+            
+            <div class="mt-2">
+              <p-button label="Update Password" icon="pi pi-lock" styleClass="border-round-lg font-semibold shadow-1 px-4 bg-primary border-none text-sm py-2"></p-button>
+            </div>
+          </div>
+        }
+
+      </div>
+    </div>
+  </div>
+</div>

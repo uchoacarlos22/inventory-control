@@ -1,0 +1,4 @@
+/* Estilos da view de Categories */
+::ng-deep .text-capitalize {
+    text-transform: capitalize;
+}
