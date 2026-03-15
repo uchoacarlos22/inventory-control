@@ -6,6 +6,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { TagModule } from 'primeng/tag';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 interface CategoryView {
   name: string;
@@ -21,7 +22,7 @@ interface CategoryView {
 @Component({
   selector: 'app-categories',
   standalone: true,
-  imports: [CommonModule, TableModule, ButtonModule, InputTextModule, TagModule, FormsModule],
+  imports: [CommonModule, TableModule, ButtonModule, InputTextModule, TagModule, FormsModule, TranslateModule],
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.css']
 })

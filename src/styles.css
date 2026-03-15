@@ -1,40 +1,227 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --neon-cyan: #0ff;
+  --neon-blue: #007bff;
+  --neon-magenta: #e028ffd1;
+  --glass-bg: rgba(10, 15, 30, 0.4);
+  --glass-border: rgba(0, 255, 255, 0.15);
+  --glass-border-hover: rgba(0, 255, 255, 0.4);
+}
 
 html, body {
     margin: 0;
     padding: 0;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: #f8fafc;
-    color: #334155;
+    color: #e2e8f0; /* Default text is pale blue/white instead of dark */
+    
+    /* Sci-Fi Background Magic */
+    background-color: #030712;
+    background-image: url('/scifi-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
-/* Custom primeflex overrides for matching the design */
-.surface-ground {
-    background-color: #f8fafc !important;
+/* Base PrimeFlex overrides to prevent white backgrounds */
+.bg-white, .surface-card, .surface-ground, .p-datatable-table, .p-datatable-header, .p-datatable-thead > tr > th {
+    background-color: transparent !important;
+}
+.surface-border {
+    border-color: var(--glass-border) !important;
 }
 
-.text-primary {
-    color: var(--p-primary-600) !important;
+/* ========================================= */
+/* 🚀 GLASSMORPHISM UTILITY CLASSES         */
+/* ========================================= */
+
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 0 10px rgba(0, 255, 255, 0.05);
 }
 
-.bg-primary {
-    background-color: var(--p-primary-600) !important;
+.glass-active {
+    background: rgba(0, 255, 255, 0.1);
+    border-color: var(--glass-border-hover) !important;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.2), inset 0 0 15px rgba(0, 255, 255, 0.1);
 }
 
-/* Custom Slim Scrollbar for Sidebar */
-.custom-scrollbar::-webkit-scrollbar {
-    width: 4px;
+.hover\:glass-hover:hover {
+    background: rgba(0, 255, 255, 0.05);
+    border-color: var(--glass-border-hover);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
 }
 
-.custom-scrollbar::-webkit-scrollbar-track {
-    background: transparent;
+/* Glow Texts */
+.text-neon {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.3);
+}
+.text-neon-blue {
+    color: var(--neon-blue);
+    text-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
 }
 
-.custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #e2e8f0;
+.font-scifi {
+    font-family: 'Orbitron', 'Inter', sans-serif;
+    letter-spacing: 1px;
+}
+
+/* Custom Global Scrollbar - Sci-Fi Style */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(5, 10, 20, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 255, 0.2);
     border-radius: 10px;
+    border: 1px solid rgba(0, 255, 255, 0.1);
+    box-shadow: inset 0 0 5px rgba(0, 255, 255, 0.1);
 }
 
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #cbd5e1;
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 255, 255, 0.5);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+/* Firefox support */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 255, 255, 0.3) rgba(5, 10, 20, 0.5);
+}
+
+/* PrimeNG Component Global Overrides */
+.p-drawer {
+    background: rgba(5, 10, 20, 0.85) !important;
+    backdrop-filter: blur(20px);
+    border-right: 1px solid var(--glass-border);
+}
+.p-popover {
+    background: rgba(10, 15, 30, 0.85) !important;
+    backdrop-filter: blur(24px) !important;
+    border: 1px solid var(--glass-border) !important;
+    color: #fff !important;
+    box-shadow: 0 0 25px rgba(0,0,0,0.8), 0 0 10px rgba(0,255,255,0.1) !important;
+}
+.p-popover-content {
+	color: #fff !important;
+}
+
+/* Data Table Overrides */
+.p-datatable,
+.p-datatable .p-datatable-wrapper,
+.p-datatable .p-datatable-table,
+.p-datatable .p-datatable-header,
+.p-datatable .p-datatable-thead > tr,
+.p-datatable .p-datatable-thead > tr > th,
+.p-datatable .p-datatable-tbody,
+.p-datatable .p-datatable-tbody > tr,
+.p-datatable .p-datatable-tbody > tr > td,
+.p-datatable .p-datatable-tfoot > tr > td {
+    background: transparent !important;
+    background-color: transparent !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: #e2e8f0 !important;
+}
+.p-datatable.p-datatable-striped .p-datatable-tbody > tr:nth-child(even),
+.p-datatable.p-datatable-striped .p-datatable-tbody > tr:nth-child(even) > td {
+    background: rgba(255, 255, 255, 0.02) !important;
+    background-color: rgba(255, 255, 255, 0.02) !important;
+}
+.p-datatable .p-datatable-tbody > tr:hover,
+.p-datatable .p-datatable-tbody > tr:hover > td {
+    background: rgba(0, 255, 255, 0.05) !important;
+    background-color: rgba(0, 255, 255, 0.05) !important;
+    box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.1);
+}
+.p-paginator, .p-paginator-bottom {
+    background: transparent !important;
+    background-color: transparent !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+.p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+    background: rgba(0, 255, 255, 0.2) !important;
+    border-color: var(--neon-cyan) !important;
+    color: var(--neon-cyan) !important;
+}
+.p-paginator .p-paginator-pages .p-paginator-page,
+.p-paginator .p-paginator-first, .p-paginator .p-paginator-prev, .p-paginator .p-paginator-next, .p-paginator .p-paginator-last {
+    color: #94a3b8 !important;
+}
+
+/* Inputs & Dropdowns */
+.p-inputtext, .p-dropdown, .p-password-input {
+    background: rgba(5, 10, 20, 0.5) !important;
+    border: 1px solid rgba(0, 255, 255, 0.2) !important;
+    color: #e2e8f0 !important;
+    transition: all 0.3s ease;
+}
+.p-inputtext:enabled:hover, .p-dropdown:not(.p-disabled):hover {
+    border-color: rgba(0, 255, 255, 0.5) !important;
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.2) !important;
+}
+.p-inputtext:enabled:focus, .p-dropdown:not(.p-disabled).p-focus {
+    border-color: var(--neon-cyan) !important;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.4) !important;
+    outline: 0 none;
+}
+.p-dropdown-panel {
+    background: rgba(10, 15, 30, 0.95) !important;
+    border: 1px solid var(--neon-cyan) !important;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2) !important;
+}
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+    color: #e2e8f0 !important;
+    background: transparent !important;
+}
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item:not(.p-highlight):not(.p-disabled):hover {
+    background: rgba(0, 255, 255, 0.1) !important;
+    color: var(--neon-cyan) !important;
+}
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+    background: rgba(0, 255, 255, 0.2) !important;
+    color: var(--neon-cyan) !important;
+}
+.p-dropdown .p-dropdown-trigger {
+    color: var(--neon-cyan) !important;
+}
+
+/* ========================================= */
+/* 🎨 ACCESSIBILITY & CONTRAST OVERRIDES    */
+/* ========================================= */
+
+/* Inverting PrimeFlex text colors for dark theme */
+.text-900 { color: #ffffff !important; }
+.text-800 { color: #f8fafc !important; } /* White-blue */
+.text-700 { color: #f1f5f9 !important; }
+.text-600 { color: #e2e8f0 !important; }
+.text-500 { color: #cbd5e1 !important; } /* Light gray-blue */
+.text-400 { color: #94a3b8 !important; } /* Muted but readable */
+
+/* Forcing contrast in labels and specific UI elements */
+label, .p-column-title, .p-paginator-current {
+    color: #e2e8f0 !important;
+}
+
+/* Card titles and Headers */
+h1, h2, h3, h4, .font-bold {
+    color: #ffffff !important;
+}
+
+/* Button secondary contrast */
+.p-button.p-button-secondary.p-button-outlined {
+    color: #e2e8f0 !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+.p-button.p-button-secondary.p-button-outlined:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
 }

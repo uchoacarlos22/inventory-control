@@ -2,12 +2,12 @@
   
   <div class="flex flex-column mb-5 mt-2">
     <div class="flex justify-content-between align-items-center mb-4">
-      <div class="text-sm text-500 font-medium mb-3">System / <span class="text-900">Support</span></div>
+      <div class="text-sm text-500 font-medium mb-3">{{ 'SUPPORT.SECTOR' | translate }} / <span class="text-900">{{ 'MENU.SUPPORT' | translate }}</span></div>
     </div>
     
     <div>
-      <h1 class="text-3xl font-bold text-900 m-0 mb-2 tracking-tight">Help & Support</h1>
-      <p class="text-600 text-sm m-0">Find answers in our FAQ or contact our specialized support team.</p>
+      <h1 class="text-3xl font-bold text-900 m-0 mb-2 tracking-tight">{{ 'SUPPORT.TITLE' | translate }}</h1>
+      <p class="text-600 text-sm m-0">{{ 'SUPPORT.SUBTITLE' | translate }}</p>
     </div>
   </div>
 
@@ -21,36 +21,36 @@
           <div class="bg-indigo-50 border-round-lg flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
             <i class="pi pi-envelope text-primary text-xl"></i>
           </div>
-          <h2 class="m-0 text-xl font-bold text-900">Contact Us</h2>
+          <h2 class="m-0 text-xl font-bold text-900">{{ 'SUPPORT.CONTACT.TITLE' | translate }}</h2>
         </div>
 
         <p class="text-600 text-sm mb-5 line-height-3">
-          Can't find what you're looking for? Send us a direct message and our team will get back to you within 24 hours.
+          {{ 'SUPPORT.CONTACT.DESC' | translate }}
         </p>
 
         <div class="flex flex-column gap-4">
           <div class="flex flex-column gap-2">
-            <label class="font-medium text-700 text-sm">Subject</label>
-            <input pInputText type="text" [(ngModel)]="contactForm.subject" placeholder="Ex: Billing issue, Bug report..." class="border-round-lg py-2" />
+            <label class="font-medium text-700 text-sm">{{ 'SUPPORT.CONTACT.SUBJECT' | translate }}</label>
+            <input pInputText type="text" [(ngModel)]="contactForm.subject" [placeholder]="'SUPPORT.CONTACT.SUBJECT_PLACEHOLDER' | translate" class="border-round-lg py-2" />
           </div>
 
           <div class="flex flex-column gap-2 mb-2">
-            <label class="font-medium text-700 text-sm">Message</label>
-            <textarea pInputTextarea [(ngModel)]="contactForm.message" rows="6" placeholder="Describe how we can help you in detail..." class="border-round-lg py-2" style="resize: none;"></textarea>
+            <label class="font-medium text-700 text-sm">{{ 'SUPPORT.CONTACT.MESSAGE' | translate }}</label>
+            <textarea pInputTextarea [(ngModel)]="contactForm.message" rows="6" [placeholder]="'SUPPORT.CONTACT.MESSAGE_PLACEHOLDER' | translate" class="border-round-lg py-2" style="resize: none;"></textarea>
           </div>
 
-          <p-button label="Send Message" icon="pi pi-send" (onClick)="sendMessage()" [disabled]="!contactForm.subject || !contactForm.message" styleClass="w-full border-round-lg font-bold py-3 bg-primary border-none shadow-1"></p-button>
+          <p-button [label]="'SUPPORT.CONTACT.BTN_SEND' | translate" icon="pi pi-send" (onClick)="sendMessage()" [disabled]="!contactForm.subject || !contactForm.message" styleClass="w-full border-round-lg font-bold py-3 bg-primary border-none shadow-1"></p-button>
         </div>
 
         <div class="mt-6 border-top-1 surface-border pt-4">
-          <span class="block font-bold text-900 mb-2">Direct Contacts</span>
+          <span class="block font-bold text-900 mb-2">{{ 'SUPPORT.CONTACT.DIRECT' | translate }}</span>
           <div class="flex align-items-center gap-2 mb-2">
             <i class="pi pi-phone text-500"></i>
-            <span class="text-600 text-sm">+1 (800) 123-4567</span>
+            <span class="text-600 text-sm">{{ 'SUPPORT.CONTACT.PHONE' | translate }}</span>
           </div>
           <div class="flex align-items-center gap-2">
             <i class="pi pi-calendar text-500"></i>
-            <span class="text-600 text-sm">Mon-Fri, 9am to 6pm EST</span>
+            <span class="text-600 text-sm">{{ 'SUPPORT.CONTACT.HOURS' | translate }}</span>
           </div>
         </div>
       </div>
@@ -66,27 +66,27 @@
 
         <p-accordion [multiple]="true" styleClass="mt-3 custom-accordion">
           
-          <p-accordionTab header="How do I export my sales data?">
+          <p-accordionTab [header]="'SUPPORT.FAQ.Q1' | translate">
             <p class="m-0 text-600 line-height-3 text-sm">
-              Navigating to the Sales view, you will find an "Export" button on the top right corner of the Sales History table. Clicking it will automatically generate and download a CSV file containing all your filtered transactions.
+              {{ 'SUPPORT.FAQ.A1' | translate }}
             </p>
           </p-accordionTab>
           
-          <p-accordionTab header="What happens when a product is marked as 'Out of Stock'?">
+          <p-accordionTab [header]="'SUPPORT.FAQ.Q2' | translate">
             <p class="m-0 text-600 line-height-3 text-sm">
-              When a product quantity hits zero, it is automatically flagged as Out of Stock in your dashboard. Sales attempts for this product will be blocked unless you explicitly enable backordering in the system settings.
+              {{ 'SUPPORT.FAQ.A2' | translate }}
             </p>
           </p-accordionTab>
 
-          <p-accordionTab header="Can I add multiple user accounts?">
+          <p-accordionTab [header]="'SUPPORT.FAQ.Q3' | translate">
             <p class="m-0 text-600 line-height-3 text-sm">
-              Currently, the StockFlow Pro demo environment operates under a single Administrator account. Multi-tenant and role-based access control (RBAC) features are available in the Enterprise subscription tier.
+              {{ 'SUPPORT.FAQ.A3' | translate }}
             </p>
           </p-accordionTab>
 
-          <p-accordionTab header="How often is the Dashboard statistics updated?">
+          <p-accordionTab [header]="'SUPPORT.FAQ.Q4' | translate">
             <p class="m-0 text-600 line-height-3 text-sm">
-              Our architecture utilizes Angular Signals to provide reactive, instantaneous updates. Any change made in the sales or inventory views is immediately reflected in the Dashboard without requiring a page reload.
+              {{ 'SUPPORT.FAQ.A4' | translate }}
             </p>
           </p-accordionTab>
 

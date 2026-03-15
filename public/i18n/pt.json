@@ -1,0 +1,211 @@
+{
+  "APP": {
+    "TITLE": "INVENTÁRIO",
+    "SUBTITLE": "QUANTUM OS_"
+  },
+  "MENU": {
+    "DASHBOARD": "Painel",
+    "PRODUCTS": "Produtos",
+    "CATEGORIES": "Categorias",
+    "SALES": "Vendas",
+    "REPORTS": "Relatórios",
+    "SYS_OPS": "SISTEMAS",
+    "SETTINGS": "Configurações",
+    "SUPPORT": "Suporte",
+    "LOGOUT": "Desconectar"
+  },
+  "LOGIN": {
+    "TITLE": "QUANTUM OS",
+    "SUBTITLE": "GATEWAY DE AUTENTICAÇÃO SEGURO",
+    "FORM_TITLE": "Identifique a Origem",
+    "FORM_SUB": "Insira as credenciais para conexão",
+    "BTN_SUBMIT": "Inicializar Sequência",
+    "LINK_BYPASS": "Bypass quebrado?",
+    "USER_LABEL": "Código de Acesso",
+    "PASS_LABEL": "Chave Biométrica"
+  },
+  "DASHBOARD": {
+    "METRICS": {
+      "TOTAL_PRODUCTS": "Ativos Totais",
+      "OUT_OF_STOCK": "Nódulos Esgotados",
+      "LOW_STOCK": "Integridade Baixa",
+      "TOTAL_VALUE": "Valor Total"
+    },
+    "CHARTS": {
+      "SALES_STREAM": "FLUXO DE VENDAS",
+      "INVENTORY_DENSITY": "DENSIDADE DO INVENTÁRIO",
+      "UNITS_NODE": "Unidades no Nódulo"
+    },
+    "LOGS": {
+      "TITLE": "REGISTROS DO SISTEMA",
+      "NODE_UPLINKED": "Nódulo Conectado",
+      "CRITICAL_ALERT": "Alerta de Nível Crítico",
+      "RESTOCK_REQ": "Reabastecimento"
+    }
+  },
+  "SALES": {
+    "SECTORS": "Setores",
+    "SALES_GRID": "Transações",
+    "TITLE": "Matriz de Vendas",
+    "SUBTITLE": "Sincronizar operações e varrer o pipeline histórico.",
+    "SEARCH": "Consultar Logs...",
+    "EXECUTE_NODE": "Executar Nódulo",
+    "ITEM_ENTITY": "Entidade do Item",
+    "SELECT_ENTITY": "Selecione a Entidade...",
+    "UNITS": "Blocos/Qtd",
+    "OUTPUT_VALUE": "Valor de Saída:",
+    "SIGN_CONTRACT": "Assinar Contrato",
+    "CYCLE_OUTPUT": "Saída Rápida",
+    "TRANSACTIONS": "Transações",
+    "LAST_CYCLE": "v. Último Ciclo",
+    "HISTORICAL_MATRIX": "Matriz Histórica",
+    "FILTERS": "Filtros",
+    "DOWNLOAD": "Extrair",
+    "TABLE": {
+      "TIMESTAMP": "Timestamp",
+      "ENTITY": "Entidade",
+      "BLOCKS": "Blocos",
+      "ENERGY_PRICE": "Preço Energético",
+      "STATE": "Status",
+      "COMPLETED": "Completado",
+      "PENDING": "Pendente",
+      "CANCELED": "Expirado"
+    }
+  },
+  "SUPPORT": {
+    "SECTOR": "Sistema",
+    "TITLE": "Ajuda & Suporte",
+    "SUBTITLE": "Encontre respostas em nosso FAQ ou entre em contato com nosso time especializado.",
+    "CONTACT": {
+      "TITLE": "Contate-nos",
+      "DESC": "Não encontrou o que procurava? Envie uma mensagem direta e nosso time responderá em até 24 horas.",
+      "SUBJECT": "Assunto",
+      "SUBJECT_PLACEHOLDER": "Ex: Problema de cobrança, Relato de bug...",
+      "MESSAGE": "Mensagem",
+      "MESSAGE_PLACEHOLDER": "Descreva como podemos ajudar em detalhes...",
+      "BTN_SEND": "Enviar Mensagem",
+      "DIRECT": "Contatos Diretos",
+      "PHONE": "+55 (11) 98765-4321",
+      "HOURS": "Seg-Sex, 9h às 18h BRT"
+    },
+    "FAQ": {
+      "TITLE": "Perguntas Frequentes",
+      "Q1": "Como exporto meus dados de vendas?",
+      "A1": "Navegando para a visualização de Vendas, você encontrará um botão \"Exportar\" no canto superior direito da tabela de Histórico de Vendas. Clicar nele gerará e baixará automaticamente um arquivo CSV contendo todas as suas transações filtradas.",
+      "Q2": "O que acontece quando um produto é marcado como 'Fora de Estoque'?",
+      "A2": "Quando a quantidade de um produto atinge zero, ele é automaticamente sinalizado como Fora de Estoque no painel. As tentativas de venda para este produto serão bloqueadas, a menos que você habilite explicitamente pedidos em espera nas configurações do sistema.",
+      "Q3": "Posso adicionar várias contas de usuário?",
+      "A3": "Atualmente, o ambiente de demonstração StockFlow Pro opera em uma única conta de Administrador. Recursos de multi-inquilino e controle de acesso baseado em função (RBAC) estão disponíveis no nível de assinatura Enterprise.",
+      "Q4": "Com que frequência as estatísticas do Dashboard são atualizadas?",
+      "A4": "Nossa arquitetura utiliza Angular Signals para fornecer atualizações reativas e instantâneas. Qualquer alteração feita nas visualizações de vendas ou inventário é refletida imediatamente no Dashboard sem exigir o recarregamento da página."
+    }
+  },
+  "SETTINGS": {
+    "SECTOR": "Sistema",
+    "TITLE": "Configurações",
+    "SUBTITLE": "Gerencie suas preferências de conta e configurações do sistema.",
+    "TABS": {
+      "PROFILE": "Perfil",
+      "PREFERENCES": "Preferências",
+      "SECURITY": "Segurança"
+    },
+    "PROFILE": {
+      "TITLE": "Informações Pessoais",
+      "CHANGE_AVATAR": "Alterar Avatar",
+      "AVATAR_DESC": "Tamanho recomendado: 256x256px. Máx 2MB.",
+      "FIRST_NAME": "Nome",
+      "LAST_NAME": "Sobrenome",
+      "EMAIL": "Endereço de E-mail",
+      "ROLE": "Função",
+      "BTN_SAVE": "Salvar Alterações"
+    },
+    "PREFERENCES": {
+      "TITLE": "Preferências do Sistema",
+      "LANGUAGE": "Idioma",
+      "NOTIFICATIONS_TITLE": "Notificações",
+      "EMAIL_ALERTS": "Alertas de E-mail",
+      "EMAIL_DESC": "Receba notificações por e-mail para níveis críticos de estoque.",
+      "PUSH_NOTIFS": "Notificações Push",
+      "PUSH_DESC": "Receba notificações no navegador para novas vendas.",
+      "WEEKLY_REPORTS": "Relatórios Semanais",
+      "WEEKLY_DESC": "Obtenha um resumo semanal do desempenho do seu inventário.",
+      "BTN_SAVE": "Salvar Preferências"
+    },
+    "SECURITY": {
+      "TITLE": "Configurações de Segurança",
+      "TWO_FACTOR": "Autenticação de Dois Fatores",
+      "TWO_FACTOR_DESC": "Adicione uma camada extra de segurança à sua conta.",
+      "BTN_ENABLE_2FA": "Ativar 2FA",
+      "CHANGE_PASSWORD": "Alterar Senha",
+      "CURRENT_PASS": "Senha Atual",
+      "NEW_PASS": "Nova Senha",
+      "CONFIRM_PASS": "Confirmar Nova Senha",
+      "BTN_UPDATE": "Atualizar Senha"
+    }
+  },
+  "PRODUCTS": {
+    "TITLE": "Produtos",
+    "SUBTITLE": "Gerencie os itens do inventário e monitore os níveis de estoque.",
+    "BTN_ADD": "Adicionar Produto",
+    "SEARCH_PLACEHOLDER": "Buscar por nome, SKU ou categoria...",
+    "FILTER_ALL": "Todas as Categorias",
+    "BTN_FILTERS": "Mais Filtros",
+    "TABLE": {
+      "PRODUCT": "Produto",
+      "CATEGORY": "Categoria",
+      "PRICE": "Preço",
+      "STOCK": "Status de Estoque",
+      "ACTIONS": "Ações",
+      "UNITS": "unidades"
+    },
+    "STOCK_STATUS": {
+      "IN_STOCK": "Em Estoque",
+      "LOW_STOCK": "Estoque Baixo",
+      "OUT_OF_STOCK": "Fora de Estoque"
+    }
+  },
+  "CATEGORIES": {
+    "TITLE": "Categorias",
+    "SUBTITLE": "Gerencie e organize seus grupos de produtos de forma eficaz.",
+    "SEARCH_PLACEHOLDER": "Buscar categorias...",
+    "BTN_CREATE": "Criar Categoria",
+    "METRICS": {
+      "TOTAL": "Total de Categorias",
+      "PRODUCTS": "Produtos Categorizados",
+      "INACTIVE": "Categorias Inativas"
+    },
+    "TABLE": {
+      "NAME": "Nome da Categoria",
+      "COUNT": "Qtd de Produtos",
+      "PRODUCTS_LABEL": "produtos",
+      "STATUS": "Status",
+      "MODIFIED": "Última Modificação",
+      "ACTIONS": "Ações"
+    }
+  },
+  "REPORTS": {
+    "TITLE": "Relatórios & Análise",
+    "SUBTITLE": "Varredura de dados históricos e análise profunda de inventário.",
+    "FILTERS": {
+      "PERIOD": "Intervalo de Dados",
+      "LAST_7_DAYS": "Últimos 7 Dias",
+      "LAST_30_DAYS": "Últimos 30 Dias",
+      "LAST_6_MONTHS": "Últimos 6 Meses",
+      "CUSTOM": "Intervalo customizado"
+    },
+    "CHARTS": {
+      "REVENUE": "Distribuição de Receita",
+      "INVENTORY_HEALTH": "Índice de Saúde do Estoque",
+      "TOP_CATEGORIES": "Desempenho de Categorias"
+    },
+    "TABLE": {
+      "METRIC": "Métrica Principal",
+      "VALUE": "Valor de Saída",
+      "TREND": "Status de Tendência",
+      "STATUS_STABLE": "Estável",
+      "STATUS_UP": "Uplink Crescente",
+      "STATUS_DOWN": "Integridade em Queda"
+    },
+    "BTN_EXPORT": "Extrair Pack de Dados"
+  }
+}

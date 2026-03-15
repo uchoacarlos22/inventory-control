@@ -1,0 +1,211 @@
+{
+  "APP": {
+    "TITLE": "INVENTORY",
+    "SUBTITLE": "QUANTUM OS_"
+  },
+  "MENU": {
+    "DASHBOARD": "Dashboard",
+    "PRODUCTS": "Products",
+    "CATEGORIES": "Categories",
+    "SALES": "Sales",
+    "REPORTS": "Reports",
+    "SYS_OPS": "SYS_OPS",
+    "SETTINGS": "Settings",
+    "SUPPORT": "Support",
+    "LOGOUT": "Disconnect"
+  },
+  "LOGIN": {
+    "TITLE": "QUANTUM OS",
+    "SUBTITLE": "SECURE AUTHENTICATION GATEWAY",
+    "FORM_TITLE": "Identify Source",
+    "FORM_SUB": "Please input credentials to link",
+    "BTN_SUBMIT": "Initialize Sequence",
+    "LINK_BYPASS": "Bypass link broken?",
+    "USER_LABEL": "Access Code",
+    "PASS_LABEL": "Biometric Key"
+  },
+  "DASHBOARD": {
+    "METRICS": {
+      "TOTAL_PRODUCTS": "Total Assets",
+      "OUT_OF_STOCK": "Depleted Nodes",
+      "LOW_STOCK": "Low Integrity",
+      "TOTAL_VALUE": "Total Value"
+    },
+    "CHARTS": {
+      "SALES_STREAM": "SALES STREAM",
+      "INVENTORY_DENSITY": "INVENTORY DENSITY",
+      "UNITS_NODE": "Units in Node"
+    },
+    "LOGS": {
+      "TITLE": "SYSTEM LOGS",
+      "NODE_UPLINKED": "Node Uplinked",
+      "CRITICAL_ALERT": "Critical Level Alert",
+      "RESTOCK_REQ": "Restock Required"
+    }
+  },
+  "SALES": {
+    "SECTORS": "Sectors",
+    "SALES_GRID": "Sales Grid",
+    "TITLE": "Sales Ledger",
+    "SUBTITLE": "Synchronize new transactions and monitor historical data flow.",
+    "SEARCH": "Query Records...",
+    "EXECUTE_NODE": "Execute Node",
+    "ITEM_ENTITY": "Item Entity",
+    "SELECT_ENTITY": "Select Entity...",
+    "UNITS": "Units",
+    "OUTPUT_VALUE": "Output Value:",
+    "SIGN_CONTRACT": "Sign Contract",
+    "CYCLE_OUTPUT": "Cycle Output",
+    "TRANSACTIONS": "Transactions",
+    "LAST_CYCLE": "v. Last Cycle",
+    "HISTORICAL_MATRIX": "Historical Matrix",
+    "FILTERS": "Filters",
+    "DOWNLOAD": "Download",
+    "TABLE": {
+      "TIMESTAMP": "Timestamp",
+      "ENTITY": "Entity",
+      "BLOCKS": "Blocks",
+      "ENERGY_PRICE": "Energy Price",
+      "STATE": "State",
+      "COMPLETED": "Completed",
+      "PENDING": "Pending",
+      "CANCELED": "Canceled"
+    }
+  },
+  "SUPPORT": {
+    "SECTOR": "System",
+    "TITLE": "Help & Support",
+    "SUBTITLE": "Find answers in our FAQ or contact our specialized support team.",
+    "CONTACT": {
+      "TITLE": "Contact Us",
+      "DESC": "Can't find what you're looking for? Send us a direct message and our team will get back to you within 24 hours.",
+      "SUBJECT": "Subject",
+      "SUBJECT_PLACEHOLDER": "Ex: Billing issue, Bug report...",
+      "MESSAGE": "Message",
+      "MESSAGE_PLACEHOLDER": "Describe how we can help you in detail...",
+      "BTN_SEND": "Send Message",
+      "DIRECT": "Direct Contacts",
+      "PHONE": "+1 (800) 123-4567",
+      "HOURS": "Mon-Fri, 9am to 6pm EST"
+    },
+    "FAQ": {
+      "TITLE": "Frequently Asked Questions",
+      "Q1": "How do I export my sales data?",
+      "A1": "Navigating to the Sales view, you will find an \"Export\" button on the top right corner of the Sales History table. Clicking it will automatically generate and download a CSV file containing all your filtered transactions.",
+      "Q2": "What happens when a product is marked as 'Out of Stock'?",
+      "A2": "When a product quantity hits zero, it is automatically flagged as Out of Stock in your dashboard. Sales attempts for this product will be blocked unless you explicitly enable backordering in the system settings.",
+      "Q3": "Can I add multiple user accounts?",
+      "A3": "Currently, the StockFlow Pro demo environment operates under a single Administrator account. Multi-tenant and role-based access control (RBAC) features are available in the Enterprise subscription tier.",
+      "Q4": "How often is the Dashboard statistics updated?",
+      "A4": "Our architecture utilizes Angular Signals to provide reactive, instantaneous updates. Any change made in the sales or inventory views is immediately reflected in the Dashboard without requiring a page reload."
+    }
+  },
+  "SETTINGS": {
+    "SECTOR": "System",
+    "TITLE": "Settings",
+    "SUBTITLE": "Manage your account preferences and system configurations.",
+    "TABS": {
+      "PROFILE": "Profile",
+      "PREFERENCES": "Preferences",
+      "SECURITY": "Security"
+    },
+    "PROFILE": {
+      "TITLE": "Personal Information",
+      "CHANGE_AVATAR": "Change Avatar",
+      "AVATAR_DESC": "Recommended size: 256x256px. Max 2MB.",
+      "FIRST_NAME": "First Name",
+      "LAST_NAME": "Last Name",
+      "EMAIL": "Email Address",
+      "ROLE": "Role",
+      "BTN_SAVE": "Save Changes"
+    },
+    "PREFERENCES": {
+      "TITLE": "System Preferences",
+      "LANGUAGE": "Language",
+      "NOTIFICATIONS_TITLE": "Notifications",
+      "EMAIL_ALERTS": "Email Alerts",
+      "EMAIL_DESC": "Receive email notifications for critical stock levels.",
+      "PUSH_NOTIFS": "Push Notifications",
+      "PUSH_DESC": "Receive browser notifications for new sales.",
+      "WEEKLY_REPORTS": "Weekly Reports",
+      "WEEKLY_DESC": "Get a weekly summary of your inventory performance.",
+      "BTN_SAVE": "Save Preferences"
+    },
+    "SECURITY": {
+      "TITLE": "Security Settings",
+      "TWO_FACTOR": "Two-Factor Authentication",
+      "TWO_FACTOR_DESC": "Add an extra layer of security to your account.",
+      "BTN_ENABLE_2FA": "Enable 2FA",
+      "CHANGE_PASSWORD": "Change Password",
+      "CURRENT_PASS": "Current Password",
+      "NEW_PASS": "New Password",
+      "CONFIRM_PASS": "Confirm New Password",
+      "BTN_UPDATE": "Update Password"
+    }
+  },
+  "PRODUCTS": {
+    "TITLE": "Products",
+    "SUBTITLE": "Manage your store inventory items and monitor stock levels.",
+    "BTN_ADD": "Add Product",
+    "SEARCH_PLACEHOLDER": "Search by name, SKU, or category...",
+    "FILTER_ALL": "All Categories",
+    "BTN_FILTERS": "More Filters",
+    "TABLE": {
+      "PRODUCT": "Product",
+      "CATEGORY": "Category",
+      "PRICE": "Price",
+      "STOCK": "Stock Status",
+      "ACTIONS": "Actions",
+      "UNITS": "units"
+    },
+    "STOCK_STATUS": {
+      "IN_STOCK": "In Stock",
+      "LOW_STOCK": "Low Stock",
+      "OUT_OF_STOCK": "Out of Stock"
+    }
+  },
+  "CATEGORIES": {
+    "TITLE": "Categories",
+    "SUBTITLE": "Manage and organize your inventory product groups effectively.",
+    "SEARCH_PLACEHOLDER": "Search categories...",
+    "BTN_CREATE": "Create Category",
+    "METRICS": {
+      "TOTAL": "Total Categories",
+      "PRODUCTS": "Categorized Products",
+      "INACTIVE": "Inactive Categories"
+    },
+    "TABLE": {
+      "NAME": "Category Name",
+      "COUNT": "Number of Products",
+      "PRODUCTS_LABEL": "products",
+      "STATUS": "Status",
+      "MODIFIED": "Last Modified",
+      "ACTIONS": "Actions"
+    }
+  },
+  "REPORTS": {
+    "TITLE": "Reports & Analytics",
+    "SUBTITLE": "Historical data scanning and deep-dive inventory analytics.",
+    "FILTERS": {
+      "PERIOD": "Data Range",
+      "LAST_7_DAYS": "Last 7 Days",
+      "LAST_30_DAYS": "Last 30 Days",
+      "LAST_6_MONTHS": "Last 6 Months",
+      "CUSTOM": "Custom range"
+    },
+    "CHARTS": {
+      "REVENUE": "Revenue Distribution",
+      "INVENTORY_HEALTH": "Inventory Health Index",
+      "TOP_CATEGORIES": "Top Categories Performance"
+    },
+    "TABLE": {
+      "METRIC": "Core Metric",
+      "VALUE": "Output Value",
+      "TREND": "Trend Status",
+      "STATUS_STABLE": "Stable",
+      "STATUS_UP": "Uplink Rising",
+      "STATUS_DOWN": "Integridade Decreasing"
+    },
+    "BTN_EXPORT": "Extract Data Pack"
+  }
+}

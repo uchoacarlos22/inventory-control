@@ -6,11 +6,12 @@ import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { DividerModule } from 'primeng/divider';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-settings',
   standalone: true,
-  imports: [CommonModule, FormsModule, InputTextModule, ButtonModule, DropdownModule, InputSwitchModule, DividerModule],
+  imports: [CommonModule, FormsModule, InputTextModule, ButtonModule, DropdownModule, InputSwitchModule, DividerModule, TranslateModule],
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.css']
 })

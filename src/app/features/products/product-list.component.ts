@@ -7,11 +7,12 @@ import { InputTextModule } from 'primeng/inputtext';
 import { TagModule } from 'primeng/tag';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CommonModule, TableModule, ButtonModule, InputTextModule, TagModule, DropdownModule, FormsModule, CurrencyPipe],
+  imports: [CommonModule, TableModule, ButtonModule, InputTextModule, TagModule, DropdownModule, FormsModule, CurrencyPipe, TranslateModule],
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })

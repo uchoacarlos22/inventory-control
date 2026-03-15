@@ -4,55 +4,55 @@
     <div class="flex justify-content-between align-items-center w-full">
       <div class="relative w-full max-w-30rem">
         <i class="pi pi-search absolute text-500" style="left: 1rem; top: 1rem;"></i>
-        <input pInputText type="text" [(ngModel)]="globalFilter" (input)="dt.filterGlobal($any($event.target).value, 'contains')" placeholder="Search categories..." class="w-full bg-gray-50 border-none px-5 py-3 border-round-xl text-sm transition-colors focus:surface-200" />
+        <input pInputText type="text" [(ngModel)]="globalFilter" (input)="dt.filterGlobal($any($event.target).value, 'contains')" [placeholder]="'CATEGORIES.SEARCH_PLACEHOLDER' | translate" class="w-full bg-gray-50 border-none px-5 py-3 border-round-xl text-sm transition-colors focus:surface-200" />
       </div>
       <div class="flex gap-4 align-items-center">
         <i class="pi pi-bell text-xl text-600 cursor-pointer hover:text-900 transition-colors"></i>
         <i class="pi pi-question-circle text-xl text-600 cursor-pointer hover:text-900 transition-colors"></i>
         <div class="border-left-2 surface-border h-1rem mx-1"></div>
-        <p-button label="Create Category" icon="pi pi-plus" styleClass="border-round-lg font-semibold shadow-1 px-4 bg-primary border-none text-sm py-2"></p-button>
+        <p-button [label]="'CATEGORIES.BTN_CREATE' | translate" icon="pi pi-plus" styleClass="border-round-lg font-semibold shadow-1 px-4 bg-primary border-none text-sm py-2"></p-button>
       </div>
     </div>
   </div>
 
   <div class="mb-5">
-    <h1 class="text-3xl font-bold text-900 m-0 mb-2 tracking-tight">Categories</h1>
-    <p class="text-600 text-sm m-0">Manage and organize your inventory product groups effectively.</p>
+    <h1 class="text-3xl font-bold text-900 m-0 mb-2 tracking-tight">{{ 'CATEGORIES.TITLE' | translate }}</h1>
+    <p class="text-600 text-sm m-0">{{ 'CATEGORIES.SUBTITLE' | translate }}</p>
   </div>
 
   <!-- Summary Cards -->
   <div class="grid mb-5">
     <div class="col-12 md:col-4">
       <div class="surface-card p-5 border-round-xl shadow-1">
-        <span class="block text-500 font-medium mb-3 text-sm tracking-wide">Total Categories</span>
+        <span class="block text-500 font-medium mb-3 text-sm tracking-wide">{{ 'CATEGORIES.METRICS.TOTAL' | translate }}</span>
         <div class="text-900 font-bold text-4xl">{{ categoryViews.length }}</div>
       </div>
     </div>
     <div class="col-12 md:col-4">
       <div class="surface-card p-5 border-round-xl shadow-1">
-        <span class="block text-500 font-medium mb-3 text-sm tracking-wide">Categorized Products</span>
+        <span class="block text-500 font-medium mb-3 text-sm tracking-wide">{{ 'CATEGORIES.METRICS.PRODUCTS' | translate }}</span>
         <div class="text-900 font-bold text-4xl">{{ getTotalProducts() | number }}</div>
       </div>
     </div>
     <div class="col-12 md:col-4">
       <div class="surface-card p-5 border-round-xl shadow-1">
-        <span class="block text-500 font-medium mb-3 text-sm tracking-wide">Inactive Categories</span>
+        <span class="block text-500 font-medium mb-3 text-sm tracking-wide">{{ 'CATEGORIES.METRICS.INACTIVE' | translate }}</span>
         <div class="text-900 font-bold text-4xl">0</div>
       </div>
     </div>
   </div>
 
   <!-- Table Area -->
-  <div class="surface-card border-round-2xl shadow-1 overflow-hidden bg-white">
+  <div class="surface-card border-round-2xl shadow-1 overflow-hidden">
     <p-table #dt [value]="categoryViews" [paginator]="true" [rows]="5" [globalFilterFields]="['name', 'description']" styleClass="p-datatable-lg p-datatable-striped" responsiveLayout="scroll">
       
       <ng-template pTemplate="header">
         <tr>
-          <th class="text-xs uppercase text-500 font-bold tracking-widest pt-4 pb-3 pl-5 border-bottom-1 surface-border bg-white w-4">Category Name</th>
-          <th class="text-xs uppercase text-500 font-bold tracking-widest pt-4 pb-3 border-bottom-1 surface-border bg-white w-2">Number of Products</th>
-          <th class="text-xs uppercase text-500 font-bold tracking-widest pt-4 pb-3 border-bottom-1 surface-border bg-white w-2">Status</th>
-          <th class="text-xs uppercase text-500 font-bold tracking-widest pt-4 pb-3 border-bottom-1 surface-border bg-white w-3">Last Modified</th>
-          <th class="text-xs uppercase text-500 font-bold tracking-widest pt-4 pb-3 border-bottom-1 surface-border bg-white text-right pr-5 w-1">Actions</th>
+          <th class="text-xs uppercase text-500 font-bold tracking-widest pt-4 pb-3 pl-5 border-bottom-1 surface-border bg-white w-4">{{ 'CATEGORIES.TABLE.NAME' | translate }}</th>
+          <th class="text-xs uppercase text-500 font-bold tracking-widest pt-4 pb-3 border-bottom-1 surface-border bg-white w-2">{{ 'CATEGORIES.TABLE.COUNT' | translate }}</th>
+          <th class="text-xs uppercase text-500 font-bold tracking-widest pt-4 pb-3 border-bottom-1 surface-border bg-white w-2">{{ 'CATEGORIES.TABLE.STATUS' | translate }}</th>
+          <th class="text-xs uppercase text-500 font-bold tracking-widest pt-4 pb-3 border-bottom-1 surface-border bg-white w-3">{{ 'CATEGORIES.TABLE.MODIFIED' | translate }}</th>
+          <th class="text-xs uppercase text-500 font-bold tracking-widest pt-4 pb-3 border-bottom-1 surface-border bg-white text-right pr-5 w-1">{{ 'CATEGORIES.TABLE.ACTIONS' | translate }}</th>
         </tr>
       </ng-template>
 
@@ -70,7 +70,7 @@
             </div>
           </td>
           <td class="py-4 border-bottom-1 surface-border font-bold text-900 text-sm">
-            {{ category.count }} products
+            {{ category.count }} {{ 'CATEGORIES.TABLE.PRODUCTS_LABEL' | translate }}
           </td>
           <td class="py-4 border-bottom-1 surface-border">
             <p-tag [value]="category.status" severity="success" [rounded]="true" styleClass="font-bold text-xs px-3 py-1 bg-green-100 text-green-700"></p-tag>

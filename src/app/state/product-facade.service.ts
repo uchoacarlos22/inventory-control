@@ -13,6 +13,7 @@ export class ProductFacadeService {
   private _categories = signal<string[]>([]);
   private _loading = signal<boolean>(false);
   private _error = signal<string | null>(null);
+  public searchTerm = signal<string>('');
 
   // Computeds (A UI se inscreve nestes getters limpos)
   products = computed(() => this._products());

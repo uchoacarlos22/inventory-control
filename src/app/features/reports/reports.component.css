@@ -1,0 +1,30 @@
+:host ::ng-deep .p-dropdown.glass-input {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(0, 255, 255, 0.2) !important;
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+}
+
+:host ::ng-deep .p-dropdown.glass-input .p-dropdown-label {
+    color: var(--neon-cyan) !important;
+}
+
+:host ::ng-deep .glass-input .p-dropdown-trigger {
+    color: var(--neon-cyan) !important;
+}
+
+.surface-alpha-10 {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.border-neon-magenta {
+    border-color: #f0f !important;
+}
+
+.text-neon-magenta {
+    color: #f0f !important;
+}
+
+.letter-spacing-2 {
+    letter-spacing: 2px;
+}

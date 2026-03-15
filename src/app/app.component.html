@@ -1,20 +1,20 @@
-<div class="flex flex-column h-screen bg-gray-50 overflow-hidden font-sans">
+<div class="flex flex-column h-screen overflow-hidden font-scifi">
   
-  <div class="flex flex-1 overflow-hidden">
+  <div class="flex flex-1 overflow-hidden p-3 gap-3">
     <!-- Sidebar -->
     @if (authFacade.isAuthenticated()) {
-    <aside class="w-16rem bg-white border-right-1 surface-border hidden md:flex flex-column justify-content-between">
+    <aside class="w-16rem glass-panel hidden md:flex flex-column justify-content-between">
       <!-- Top Area (Logo + Menu) -->
       <div class="flex flex-column h-full">
         
         <!-- Logo -->
         <div class="flex align-items-center gap-3 p-4 border-bottom-1 surface-border h-5rem shrink-0">
-          <div class="bg-primary text-white border-round flex align-items-center justify-content-center shadow-2" style="width: 34px; height: 34px;">
-            <i class="pi pi-inbox text-lg"></i>
+          <div class="border-circle flex align-items-center justify-content-center" style="width: 34px; height: 34px; box-shadow: 0 0 15px var(--neon-cyan), inset 0 0 10px var(--neon-blue); border: 1px solid var(--neon-cyan);">
+            <i class="pi pi-box text-neon text-lg"></i>
           </div>
           <div>
-            <h1 class="m-0 text-sm font-bold text-900 leading-tight">Inventory Pro</h1>
-            <p class="m-0 text-500" style="font-size: 10px;">SaaS Management</p>
+            <h1 class="m-0 text-sm font-bold text-neon leading-tight uppercase tracking-widest">{{ 'APP.TITLE' | translate }}</h1>
+            <p class="m-0 text-300 uppercase tracking-widest" style="font-size: 8px;">{{ 'APP.SUBTITLE' | translate }}</p>
           </div>
         </div>
 
@@ -24,26 +24,26 @@
           <nav class="flex flex-column px-3 gap-1">
             @for (item of menuItems; track item.label) {
               <a [routerLink]="item.routerLink" 
-                 routerLinkActive="bg-indigo-50 text-primary font-bold shadow-sm"
+                 routerLinkActive="glass-active text-neon font-bold"
                  [routerLinkActiveOptions]="item.routerLink === '/dashboard' ? {exact: true} : {exact: false}"
-                 class="flex align-items-center gap-3 px-3 py-2 border-round-lg text-600 hover:surface-hover transition-colors cursor-pointer text-decoration-none font-medium text-xs">
+                 class="flex align-items-center gap-3 px-3 py-2 border-round-lg text-400 hover:text-100 hover:glass-hover transition-all cursor-pointer text-decoration-none font-medium text-xs">
                 <i [class]="item.icon" class="text-base"></i>
-                <span>{{ item.label }}</span>
+                 <span>{{ item.label | translate }}</span>
               </a>
             }
           </nav>
 
           <!-- System Navigation -->
           <div class="px-4 py-3 mt-1">
-            <span class="text-400 font-bold uppercase tracking-widest" style="font-size: 9px;">System Settings</span>
+            <span class="text-400 font-bold uppercase tracking-widest" style="font-size: 9px; letter-spacing: 2px;">{{ 'MENU.SYS_OPS' | translate }}</span>
           </div>
           <nav class="flex flex-column px-3 gap-1">
             @for (item of systemItems; track item.label) {
               <a [routerLink]="item.routerLink" 
-                 routerLinkActive="bg-indigo-50 text-primary font-bold shadow-sm"
-                 class="flex align-items-center gap-3 px-3 py-2 border-round-lg text-600 hover:surface-hover transition-colors cursor-pointer text-decoration-none font-medium text-xs">
+                 routerLinkActive="glass-active text-neon font-bold"
+                 class="flex align-items-center gap-3 px-3 py-2 border-round-lg text-400 hover:text-100 hover:glass-hover transition-all cursor-pointer text-decoration-none font-medium text-xs">
                 <i [class]="item.icon" class="text-base"></i>
-                <span>{{ item.label }}</span>
+                <span>{{ item.label | translate }}</span>
               </a>
             }
           </nav>
@@ -52,17 +52,17 @@
 
       <!-- Bottom Area (Profile / Logout) -->
       <div class="p-3 border-top-1 surface-border shrink-0">
-        <div class="flex align-items-center justify-content-between px-3 py-2 border-round-xl shadow-1 bg-white hover:surface-hover cursor-pointer transition-colors border-1 surface-border" (click)="authFacade.logout()" title="Logout">
+        <div class="flex align-items-center justify-content-between px-3 py-2 border-round-xl glass-panel hover:glass-hover cursor-pointer transition-all" (click)="authFacade.logout()" title="Logout">
           <div class="flex align-items-center gap-2">
-            <div class="bg-indigo-100 text-primary border-circle flex align-items-center justify-content-center" style="width: 28px; height: 28px">
-              <span class="font-bold" style="font-size: 9px;">AM</span>
+            <div class="border-circle flex align-items-center justify-content-center" style="width: 28px; height: 28px; background: rgba(0, 255, 255, 0.1); border: 1px solid var(--neon-cyan);">
+              <span class="font-bold text-neon" style="font-size: 9px;">AM</span>
             </div>
             <div class="overflow-hidden">
-              <span class="block font-bold text-900 text-overflow-ellipsis white-space-nowrap" style="font-size: 11px;">Alex Morgan</span>
-              <span class="block text-400" style="font-size: 9px;">Administrator</span>
+              <span class="block font-bold text-100 text-overflow-ellipsis white-space-nowrap" style="font-size: 11px;">Alex Morgan</span>
+              <span class="block text-400" style="font-size: 9px; letter-spacing: 1px;">SYS_ADMIN</span>
             </div>
           </div>
-          <i class="pi pi-sign-out text-400 text-xs hover:text-red-500 transition-colors"></i>
+          <i class="pi pi-sign-out text-400 text-xs hover:text-red-400 transition-colors"></i>
         </div>
       </div>
     </aside>
@@ -73,33 +73,169 @@
       
       <!-- Topbar -->
       @if (authFacade.isAuthenticated()) {
-      <header class="bg-white px-5 border-bottom-1 surface-border flex justify-content-between align-items-center h-5rem shrink-0">
+      <header class="mx-3 mt-2 flex justify-content-between align-items-center shrink-0">
         
         <!-- Opcional Breadcrumb/Title no Desktop ou Mobile Menu -->
         <div class="flex align-items-center gap-3">
-          <i class="pi pi-bars text-xl text-600 cursor-pointer md:hidden"></i>
-          <!-- Search -->
-          <span class="p-input-icon-left w-20rem hidden md:block">
-              <i class="pi pi-search text-500"></i>
-              <input pInputText type="text" placeholder="Search inventory, SKU, or orders..." class="w-full border-round-3xl bg-gray-50 border-none px-4 py-2 text-sm text-700" />
-          </span>
+          <i class="pi pi-bars text-xl text-300 hover:text-neon cursor-pointer md:hidden transition-colors" (click)="mobileMenuVisible.set(true)"></i>
         </div>
 
         <!-- Right Actions -->
         <div class="flex align-items-center gap-4">
-          <div class="relative cursor-pointer hover:text-900 text-600 transition-colors">
-              <i class="pi pi-bell text-xl" pBadge value="1" severity="danger"></i>
+          
+          <!-- Language Toggle -->
+          <div class="relative cursor-pointer hover:text-neon text-400 hover:bg-white-alpha-10 transition-all font-bold text-sm px-2 py-1 border-1 border-round-md surface-border flex align-items-center gap-2" (click)="toggleLanguage()" title="Toggle Language">
+              <i class="pi pi-globe text-xs"></i>
+              <span>{{ translate.currentLang | uppercase }}</span>
           </div>
+
+          <!-- Notification Bell -->
+          <div class="relative cursor-pointer hover:text-neon text-300 transition-all" (click)="notifPanel.toggle($event)">
+              <i class="pi pi-bell text-xl" pBadge [value]="unreadCount.toString()" severity="danger"></i>
+          </div>
+
+          <p-popover #notifPanel>
+            <div class="w-22rem font-scifi">
+              <!-- Header -->
+              <div class="flex justify-content-between align-items-center px-4 pt-4 pb-3 border-bottom-1 surface-border">
+                <span class="font-bold text-100 text-lg letter-spacing-1">Alerts</span>
+                <span class="text-xs font-bold text-neon cursor-pointer hover:text-100 transition-colors">Acknowledge All</span>
+              </div>
+              
+              <!-- Notification Items -->
+              <div class="flex flex-column max-h-20rem overflow-y-auto custom-scrollbar">
+                @for (notif of notifications; track notif.title) {
+                  <div class="flex align-items-start gap-3 px-4 py-3 hover:glass-hover cursor-pointer transition-colors border-bottom-1 surface-border"
+                       [class.glass-active]="notif.unread">
+                    <div class="border-circle flex align-items-center justify-content-center shrink-0" 
+                         [ngClass]="notif.iconBg" style="width: 36px; height: 36px;">
+                      <i [class]="notif.icon" [ngClass]="notif.iconColor" class="text-sm"></i>
+                    </div>
+                    <div class="flex-1 overflow-hidden">
+                      <div class="flex align-items-center gap-2">
+                        <span class="font-bold text-100 text-sm white-space-nowrap overflow-hidden text-overflow-ellipsis">{{ notif.title }}</span>
+                        @if (notif.unread) {
+                          <div class="w-0.5rem h-0.5rem border-circle shrink-0" style="width: 8px; height: 8px; background-color: var(--neon-cyan); box-shadow: 0 0 8px var(--neon-cyan);"></div>
+                        }
+                      </div>
+                      <span class="block text-400 text-xs mt-1 line-height-3">{{ notif.description }}</span>
+                      <span class="block text-500 text-xs mt-1 font-medium">{{ notif.time }}</span>
+                    </div>
+                  </div>
+                }
+              </div>
+
+              <!-- Footer -->
+              <div class="px-4 py-3 text-center border-top-1 surface-border">
+                <a class="text-neon font-bold text-sm cursor-pointer hover:underline">View Access Logs</a>
+              </div>
+            </div>
+          </p-popover>
+
           <div class="border-left-2 surface-border h-1rem mx-2"></div>
-          <div class="flex align-items-center gap-2 cursor-pointer bg-orange-100 border-circle w-2rem h-2rem justify-content-center">
-              <i class="pi pi-user text-orange-600"></i>
+
+          <!-- User Avatar -->
+          <div class="flex align-items-center gap-2 cursor-pointer border-circle w-2rem h-2rem justify-content-center transition-all"
+               style="background: rgba(0, 255, 255, 0.1); border: 1px solid var(--neon-cyan); box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);"
+               (click)="profilePanel.toggle($event)">
+              <i class="pi pi-user text-neon"></i>
           </div>
+
+          <p-popover #profilePanel>
+            <div class="w-16rem font-scifi">
+              <!-- User Info -->
+              <div class="flex align-items-center gap-3 px-4 pt-4 pb-3 border-bottom-1 surface-border">
+                <div class="border-circle flex align-items-center justify-content-center" style="width: 40px; height: 40px; background: rgba(0, 255, 255, 0.1); border: 1px solid var(--neon-cyan);">
+                  <i class="pi pi-user text-neon text-lg"></i>
+                </div>
+                <div>
+                  <span class="block font-bold text-100 text-sm">Alex Morgan</span>
+                  <span class="block text-400 text-xs">admin&#64;quantum.os</span>
+                </div>
+              </div>
+
+              <!-- Menu Options -->
+              <div class="flex flex-column py-2">
+                <a class="flex align-items-center gap-3 px-4 py-2 hover:glass-hover cursor-pointer transition-colors text-decoration-none text-300"
+                   (click)="navigateTo('/settings'); profilePanel.hide()">
+                  <i class="pi pi-user-edit text-base"></i>
+                  <span class="text-sm font-medium">My Identity</span>
+                </a>
+                <a class="flex align-items-center gap-3 px-4 py-2 hover:glass-hover cursor-pointer transition-colors text-decoration-none text-300"
+                   (click)="navigateTo('/settings'); profilePanel.hide()">
+                  <i class="pi pi-cog text-base"></i>
+                  <span class="text-sm font-medium">System Settings</span>
+                </a>
+                <a class="flex align-items-center gap-3 px-4 py-2 hover:glass-hover cursor-pointer transition-colors text-decoration-none text-300"
+                   (click)="navigateTo('/support'); profilePanel.hide()">
+                  <i class="pi pi-question-circle text-base"></i>
+                  <span class="text-sm font-medium">Support Link</span>
+                </a>
+              </div>
+
+              <!-- Logout -->
+              <div class="border-top-1 surface-border px-4 py-3">
+                <a class="flex align-items-center gap-3 cursor-pointer text-red-400 hover:text-red-300 transition-colors font-bold text-sm text-decoration-none"
+                   (click)="authFacade.logout(); profilePanel.hide()" style="text-shadow: 0 0 8px rgba(255, 0, 0, 0.5);">
+                  <i class="pi pi-power-off"></i>
+                  <span>{{ 'MENU.LOGOUT' | translate }}</span>
+                </a>
+              </div>
+            </div>
+          </p-popover>
         </div>
       </header>
       }
 
+      <!-- Mobile Menu Drawer -->
+      <p-drawer [(visible)]="mobileMenuVisible" position="left" styleClass="w-18rem border-none shadow-4 font-scifi">
+          <ng-template pTemplate="header">
+            <div class="flex align-items-center gap-3 p-2">
+              <div class="border-round flex align-items-center justify-content-center shadow-1" style="width: 32px; height: 32px; background: rgba(0, 255, 255, 0.1); border: 1px solid var(--neon-cyan);">
+                <i class="pi pi-box text-neon"></i>
+              </div>
+              <span class="font-bold text-100 text-neon">Inventory OS</span>
+            </div>
+          </ng-template>
+          
+          <div class="flex flex-column h-full">
+            <nav class="flex flex-column px-2 py-4 gap-1 flex-1 overflow-y-auto custom-scrollbar">
+              @for (item of menuItems; track item.label) {
+                <a [routerLink]="item.routerLink" 
+                   (click)="mobileMenuVisible.set(false)"
+                   routerLinkActive="glass-active text-neon font-bold"
+                   class="flex align-items-center gap-3 px-3 py-3 border-round-lg text-400 hover:glass-hover hover:text-100 transition-all cursor-pointer text-decoration-none font-medium text-sm">
+                  <i [class]="item.icon" class="text-lg"></i>
+                  <span>{{ item.label }}</span>
+                </a>
+              }
+              
+              <div class="px-3 py-3 mt-4 border-top-1 surface-border">
+                <span class="text-xs font-semibold text-500 uppercase tracking-widest">Sys_Ops</span>
+              </div>
+              
+              @for (item of systemItems; track item.label) {
+                <a [routerLink]="item.routerLink" 
+                   (click)="mobileMenuVisible.set(false)"
+                   routerLinkActive="glass-active text-neon font-bold"
+                   class="flex align-items-center gap-3 px-3 py-3 border-round-lg text-400 hover:glass-hover hover:text-100 transition-all cursor-pointer text-decoration-none font-medium text-sm">
+                  <i [class]="item.icon" class="text-lg"></i>
+                  <span>{{ item.label }}</span>
+                </a>
+              }
+            </nav>
+
+            <div class="p-4 border-top-1 surface-border" (click)="authFacade.logout(); mobileMenuVisible.set(false)">
+                <div class="flex align-items-center gap-3 text-red-400 font-bold cursor-pointer hover:bg-black-alpha-20 p-3 border-round-lg transition-colors border-1 border-transparent hover:border-red-500" style="text-shadow: 0 0 5px rgba(255,0,0,0.5);">
+                    <i class="pi pi-power-off"></i>
+                    <span>{{ 'MENU.LOGOUT' | translate }}</span>
+                </div>
+            </div>
+          </div>
+      </p-drawer>
+
       <!-- Router Outlet Content Area -->
-      <main class="flex-1 overflow-auto p-4 md:p-5 fadein animation-duration-400 bg-gray-50">
+      <main class="flex-1 overflow-auto p-4 md:p-5 fadein animation-duration-400" style="background: transparent;">
         <router-outlet></router-outlet>
       </main>
 
@@ -108,21 +244,21 @@
 
   <!-- Professional Footer (Full Width) -->
   @if (authFacade.isAuthenticated()) {
-  <footer class="bg-white px-5 py-3 border-top-1 surface-border flex flex-column md:flex-row justify-content-between align-items-center gap-3 shrink-0">
+  <footer class="glass-panel mx-3 mb-3 px-5 py-3 border-round-xl flex flex-column md:flex-row justify-content-between align-items-center gap-3 shrink-0">
     <div class="flex align-items-center gap-2">
-      <span class="text-xs text-500 font-medium">© 2024 Inventory Pro SaaS. All rights reserved.</span>
+      <span class="text-xs text-400 font-medium">© 2077 Quantum Inventory Systems.</span>
       <div class="hidden md:block border-left-1 surface-border h-1rem mx-2"></div>
       <div class="flex align-items-center gap-2">
-        <div class="w-2 h-2 border-circle bg-green-500 shadow-2 animate-pulse animation-duration-1000" style="width: 8px; height: 8px;"></div>
-        <span class="text-xs text-600 font-semibold tracking-wide">System Operational</span>
+        <div class="w-2 h-2 border-circle animate-pulse animation-duration-1000" style="width: 8px; height: 8px; background-color: var(--neon-cyan); box-shadow: 0 0 8px var(--neon-cyan);"></div>
+        <span class="text-xs text-300 font-semibold tracking-wide text-neon">Network SYN_ACK</span>
       </div>
     </div>
     
     <div class="flex align-items-center gap-4">
-      <a class="text-xs text-500 hover:text-primary cursor-pointer transition-colors font-medium text-decoration-none">Terms of Service</a>
-      <a class="text-xs text-500 hover:text-primary cursor-pointer transition-colors font-medium text-decoration-none">Privacy Policy</a>
+      <a class="text-xs text-500 hover:text-neon cursor-pointer transition-colors font-medium text-decoration-none">Protocols</a>
+      <a class="text-xs text-500 hover:text-neon cursor-pointer transition-colors font-medium text-decoration-none">Data Policy</a>
       <div class="border-left-1 surface-border h-1rem mx-2 hidden md:block"></div>
-      <span class="text-xs text-400 font-bold uppercase tracking-widest">v2.1.0-PRO</span>
+      <span class="text-xs text-500 font-bold uppercase tracking-widest">v5.1.0-CYBER</span>
     </div>
   </footer>
   }

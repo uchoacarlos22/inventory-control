@@ -7,6 +7,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { TagModule } from 'primeng/tag';
+import { TranslateModule } from '@ngx-translate/core';
 
 interface SaleTransaction {
   id: number;
@@ -22,7 +23,7 @@ interface SaleTransaction {
 @Component({
   selector: 'app-sales',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, TableModule, ButtonModule, InputTextModule, DropdownModule, TagModule, CurrencyPipe],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, TableModule, ButtonModule, InputTextModule, DropdownModule, TagModule, CurrencyPipe, TranslateModule],
   templateUrl: './sales.component.html',
   styleUrls: ['./sales.component.css']
 })
