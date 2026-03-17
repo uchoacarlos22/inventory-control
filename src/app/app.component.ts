@@ -4,8 +4,6 @@ import { CommonModule } from '@angular/common';
 import { AuthFacadeService } from './state/auth-facade.service';
 import { InputTextModule } from 'primeng/inputtext';
 import { BadgeModule } from 'primeng/badge';
-import { IconField } from 'primeng/iconfield';
-import { InputIcon } from 'primeng/inputicon';
 import { Drawer } from 'primeng/drawer';
 import { Popover } from 'primeng/popover';
 import { signal } from '@angular/core';
@@ -14,7 +12,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, RouterLink, RouterLinkActive, InputTextModule, BadgeModule, IconField, InputIcon, Drawer, Popover, TranslateModule],
+  imports: [RouterOutlet, CommonModule, RouterLink, RouterLinkActive, InputTextModule, BadgeModule, Drawer, Popover, TranslateModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
