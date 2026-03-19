@@ -196,6 +196,55 @@ html, body {
 }
 
 /* ========================================= */
+/* 🚀 SCI-FI DIALOG (P-DIALOG) OVERRIDES     */
+/* ========================================= */
+
+.p-dialog {
+    background: rgba(10, 15, 30, 0.95) !important;
+    backdrop-filter: blur(24px) !important;
+    border: 1px solid var(--neon-cyan) !important;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.9), 0 0 15px rgba(0, 255, 255, 0.15) !important;
+    border-radius: 12px !important;
+    overflow: hidden;
+}
+
+.p-dialog .p-dialog-header, 
+.p-dialog .p-dialog-content, 
+.p-dialog .p-dialog-footer {
+    background: transparent !important;
+    color: #e2e8f0 !important;
+    padding: 1.5rem 2rem !important;
+}
+
+.p-dialog .p-dialog-header {
+    border-bottom: 1px solid rgba(0, 255, 255, 0.1) !important;
+    padding-bottom: 1.25rem !important;
+}
+
+.p-dialog .p-dialog-title {
+    font-family: 'Orbitron', sans-serif !important;
+    letter-spacing: 2px !important;
+    color: var(--neon-cyan) !important;
+    font-weight: 700 !important;
+    font-size: 1.25rem !important;
+    text-transform: uppercase !important;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+.p-dialog .p-dialog-header-icons .p-dialog-header-icon {
+    color: var(--neon-cyan) !important;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.p-dialog .p-dialog-header-icons .p-dialog-header-icon:hover {
+    background: rgba(0, 255, 255, 0.1) !important;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+}
+
+/* ========================================= */
 /* 🎨 ACCESSIBILITY & CONTRAST OVERRIDES    */
 /* ========================================= */
 
@@ -224,4 +273,45 @@ h1, h2, h3, h4, .font-bold {
 }
 .p-button.p-button-secondary.p-button-outlined:hover {
     background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* ========================================= */
+/* 🏷️ SCI-FI TAGS (P-TAG) CUSTOMIZATION      */
+/* ========================================= */
+
+.p-tag {
+    background: rgba(0, 0, 0, 0.3) !important;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff !important;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.p-tag-info {
+    border: 1px solid var(--neon-cyan) !important;
+    color: var(--neon-cyan) !important;
+    box-shadow: inset 0 0 8px rgba(0, 243, 255, 0.1), 0 0 5px rgba(0, 243, 255, 0.2);
+}
+
+.p-tag-success {
+    border: 1px solid #10b981 !important;
+    color: #10b981 !important;
+    box-shadow: inset 0 0 8px rgba(16, 185, 129, 0.1), 0 0 5px rgba(16, 185, 129, 0.2);
+}
+
+.p-tag-warn {
+    border: 1px solid #f59e0b !important;
+    color: #f59e0b !important;
+    box-shadow: inset 0 0 8px rgba(245, 158, 11, 0.1), 0 0 5px rgba(245, 158, 11, 0.2);
+}
+
+.p-tag-danger {
+    border: 1px solid #ef4444 !important;
+    color: #ef4444 !important;
+    box-shadow: inset 0 0 8px rgba(239, 68, 68, 0.1), 0 0 5px rgba(239, 68, 68, 0.2);
+}
+
+.p-tag-secondary {
+    border: 1px solid #94a3b8 !important;
+    color: #e2e8f0 !important;
 }

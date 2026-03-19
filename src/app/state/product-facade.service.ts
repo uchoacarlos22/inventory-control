@@ -18,6 +18,10 @@ export class ProductFacadeService {
   // Computeds (A UI se inscreve nestes getters limpos)
   products = computed(() => this._products());
   categories = computed(() => this._categories());
+  categoryOptions = computed(() => this._categories().map(cat => ({ 
+    label: cat.charAt(0).toUpperCase() + cat.slice(1).toLowerCase(), 
+    value: cat 
+  })));
   loading = computed(() => this._loading());
   error = computed(() => this._error());
 
@@ -59,5 +63,25 @@ export class ProductFacadeService {
         this._loading.set(false);
       }
     });
+  }
+
+  addProduct(product: Omit<Product, 'id'>): void {
+    this._loading.set(true);
+    this.dataService.createProduct(product).subscribe({
+      next: (newProduct) => {
+        // Fakestoreapi returns the product with id 21 usually for new items
+        this._products.update(prods => [newProduct, ...prods]);
+        this._loading.set(false);
+      },
+      error: (err) => {
+        this._error.set(err.message);
+        this._loading.set(false);
+      }
+    });
+  }
+
+  addCategory(name: string): void {
+    if (this._categories().includes(name)) return;
+    this._categories.update(cats => [...cats, name]);
   }
 }

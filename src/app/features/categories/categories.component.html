@@ -1,81 +1,79 @@
-<div class="p-0 font-sans">
-  
+<div class="p-0 font-scifi">
+  <!-- Header Section -->
   <div class="flex justify-content-between align-items-center mb-5 mt-2">
     <div class="flex justify-content-between align-items-center w-full">
-      <div class="relative w-full max-w-30rem">
-        <i class="pi pi-search absolute text-500" style="left: 1rem; top: 1rem;"></i>
-        <input pInputText type="text" [(ngModel)]="globalFilter" (input)="dt.filterGlobal($any($event.target).value, 'contains')" [placeholder]="'CATEGORIES.SEARCH_PLACEHOLDER' | translate" class="w-full bg-gray-50 border-none px-5 py-3 border-round-xl text-sm transition-colors focus:surface-200" />
+      <div class="flex flex-row align-items-center relative w-full max-w-30rem">
+        <i class="pi pi-search text-neon pr-4"></i>
+        <input pInputText type="text" [(ngModel)]="globalFilter" (input)="dt.filterGlobal($any($event.target).value, 'contains')" [placeholder]="'CATEGORIES.SEARCH_PLACEHOLDER' | translate" class="w-full border-round-xl py-3 px-5 text-100 placeholder-white-alpha-40" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(0, 255, 255, 0.2);" />
       </div>
       <div class="flex gap-4 align-items-center">
-        <i class="pi pi-bell text-xl text-600 cursor-pointer hover:text-900 transition-colors"></i>
-        <i class="pi pi-question-circle text-xl text-600 cursor-pointer hover:text-900 transition-colors"></i>
-        <div class="border-left-2 surface-border h-1rem mx-1"></div>
-        <p-button [label]="'CATEGORIES.BTN_CREATE' | translate" icon="pi pi-plus" styleClass="border-round-lg font-semibold shadow-1 px-4 bg-primary border-none text-sm py-2"></p-button>
+        <!-- Icons removed as requested -->
+        <p-button [label]="'CATEGORIES.BTN_CREATE' | translate" icon="pi pi-plus" (click)="showAddDialog()" styleClass="border-round-lg font-bold shadow-2 px-4 bg-primary border-none text-sm py-2 uppercase tracking-widest" [style]="{'background': 'linear-gradient(90deg, var(--neon-cyan), var(--neon-blue))', 'color': '#000'}"></p-button>
       </div>
     </div>
   </div>
 
   <div class="mb-5">
-    <h1 class="text-3xl font-bold text-900 m-0 mb-2 tracking-tight">{{ 'CATEGORIES.TITLE' | translate }}</h1>
-    <p class="text-600 text-sm m-0">{{ 'CATEGORIES.SUBTITLE' | translate }}</p>
+    <h1 class="text-3xl font-bold text-shadow-1 m-0 mb-2 tracking-tight uppercase text-neon">{{ 'CATEGORIES.TITLE' | translate }}</h1>
+    <p class="text-400 text-sm m-0">{{ 'CATEGORIES.SUBTITLE' | translate }}</p>
   </div>
 
   <!-- Summary Cards -->
   <div class="grid mb-5">
     <div class="col-12 md:col-4">
-      <div class="surface-card p-5 border-round-xl shadow-1">
-        <span class="block text-500 font-medium mb-3 text-sm tracking-wide">{{ 'CATEGORIES.METRICS.TOTAL' | translate }}</span>
-        <div class="text-900 font-bold text-4xl">{{ categoryViews.length }}</div>
+      <div class="glass-panel p-5 border-round-xl shadow-1">
+        <span class="block text-400 font-medium mb-3 text-xs uppercase tracking-widest text-700">{{ 'CATEGORIES.METRICS.TOTAL' | translate }}</span>
+        <div class="text-100 font-bold text-4xl">{{ categoryViews.length }}</div>
       </div>
     </div>
     <div class="col-12 md:col-4">
-      <div class="surface-card p-5 border-round-xl shadow-1">
-        <span class="block text-500 font-medium mb-3 text-sm tracking-wide">{{ 'CATEGORIES.METRICS.PRODUCTS' | translate }}</span>
-        <div class="text-900 font-bold text-4xl">{{ getTotalProducts() | number }}</div>
+      <div class="glass-panel p-5 border-round-xl shadow-1">
+        <span class="block text-400 font-medium mb-3 text-xs uppercase tracking-widest text-700">{{ 'CATEGORIES.METRICS.PRODUCTS' | translate }}</span>
+        <div class="text-100 font-bold text-4xl">{{ getTotalProducts() | number }}</div>
       </div>
     </div>
     <div class="col-12 md:col-4">
-      <div class="surface-card p-5 border-round-xl shadow-1">
-        <span class="block text-500 font-medium mb-3 text-sm tracking-wide">{{ 'CATEGORIES.METRICS.INACTIVE' | translate }}</span>
-        <div class="text-900 font-bold text-4xl">0</div>
+      <div class="glass-panel p-5 border-round-xl shadow-1">
+        <span class="block text-400 font-medium mb-3 text-xs uppercase tracking-widest text-700">{{ 'CATEGORIES.METRICS.INACTIVE' | translate }}</span>
+        <div class="text-100 font-bold text-4xl">0</div>
       </div>
     </div>
   </div>
 
   <!-- Table Area -->
-  <div class="surface-card border-round-2xl shadow-1 overflow-hidden">
+  <div class="glass-panel border-round-2xl shadow-2 overflow-hidden mb-5">
     <p-table #dt [value]="categoryViews" [paginator]="true" [rows]="5" [globalFilterFields]="['name', 'description']" styleClass="p-datatable-lg p-datatable-striped" responsiveLayout="scroll">
       
       <ng-template pTemplate="header">
         <tr>
-          <th class="text-xs uppercase text-500 font-bold tracking-widest pt-4 pb-3 pl-5 border-bottom-1 surface-border bg-white w-4">{{ 'CATEGORIES.TABLE.NAME' | translate }}</th>
-          <th class="text-xs uppercase text-500 font-bold tracking-widest pt-4 pb-3 border-bottom-1 surface-border bg-white w-2">{{ 'CATEGORIES.TABLE.COUNT' | translate }}</th>
-          <th class="text-xs uppercase text-500 font-bold tracking-widest pt-4 pb-3 border-bottom-1 surface-border bg-white w-2">{{ 'CATEGORIES.TABLE.STATUS' | translate }}</th>
-          <th class="text-xs uppercase text-500 font-bold tracking-widest pt-4 pb-3 border-bottom-1 surface-border bg-white w-3">{{ 'CATEGORIES.TABLE.MODIFIED' | translate }}</th>
-          <th class="text-xs uppercase text-500 font-bold tracking-widest pt-4 pb-3 border-bottom-1 surface-border bg-white text-right pr-5 w-1">{{ 'CATEGORIES.TABLE.ACTIONS' | translate }}</th>
+          <th class="text-xs uppercase text-500 font-bold tracking-widest pt-4 pb-3 pl-5 border-bottom-1 surface-border bg-transparent w-4 text-neon">{{ 'CATEGORIES.TABLE.NAME' | translate }}</th>
+          <th class="text-xs uppercase text-500 font-bold tracking-widest pt-4 pb-3 border-bottom-1 surface-border bg-transparent w-2 text-neon">{{ 'CATEGORIES.TABLE.COUNT' | translate }}</th>
+          <th class="text-xs uppercase text-500 font-bold tracking-widest pt-4 pb-3 border-bottom-1 surface-border bg-transparent w-2 text-neon">{{ 'CATEGORIES.TABLE.STATUS' | translate }}</th>
+          <th class="text-xs uppercase text-500 font-bold tracking-widest pt-4 pb-3 border-bottom-1 surface-border bg-transparent w-3 text-neon">{{ 'CATEGORIES.TABLE.MODIFIED' | translate }}</th>
+          <th class="text-xs uppercase text-500 font-bold tracking-widest pt-4 pb-3 border-bottom-1 surface-border bg-transparent text-right pr-5 w-1 text-neon">{{ 'CATEGORIES.TABLE.ACTIONS' | translate }}</th>
         </tr>
       </ng-template>
 
       <ng-template pTemplate="body" let-category>
-        <tr class="hover:bg-gray-50 transition-colors">
+        <tr class="hover:bg-white-alpha-5 transition-colors">
           <td class="pl-5 py-4 border-bottom-1 surface-border">
             <div class="flex align-items-center gap-4">
-              <div class="border-round-lg flex align-items-center justify-content-center p-2" [ngClass]="category.bgColor" style="width: 42px; height: 42px; flex-shrink: 0;">
+              <div class="border-round-lg flex align-items-center justify-content-center p-2 bg-white-alpha-5 border-1 border-white-alpha-10" style="width: 42px; height: 42px; flex-shrink: 0;">
                 <i [class]="category.icon" [ngClass]="category.iconColor" class="text-xl"></i>
               </div>
               <div class="overflow-hidden">
-                <span class="block text-900 font-bold text-sm text-capitalize">{{ category.name }}</span>
-                <span class="block text-500 text-xs font-medium mt-1">{{ category.description }}</span>
+                <span class="block text-100 font-bold text-sm text-capitalize">{{ category.name }}</span>
+                <span class="block text-400 text-xs font-medium mt-1">{{ category.description }}</span>
               </div>
             </div>
           </td>
-          <td class="py-4 border-bottom-1 surface-border font-bold text-900 text-sm">
+          <td class="py-4 border-bottom-1 surface-border font-bold text-100 text-sm">
             {{ category.count }} {{ 'CATEGORIES.TABLE.PRODUCTS_LABEL' | translate }}
           </td>
           <td class="py-4 border-bottom-1 surface-border">
-            <p-tag [value]="category.status" severity="success" [rounded]="true" styleClass="font-bold text-xs px-3 py-1 bg-green-100 text-green-700"></p-tag>
+            <p-tag [value]="category.status" severity="success" [rounded]="true" styleClass="font-bold text-xs px-3 py-1 bg-green-500-alpha-20 text-green-300 border-none"></p-tag>
           </td>
-          <td class="py-4 border-bottom-1 surface-border text-500 text-sm">
+          <td class="py-4 border-bottom-1 surface-border text-400 text-sm">
             {{ category.lastModified }}
           </td>
           <td class="py-4 border-bottom-1 surface-border text-right pr-5">
@@ -90,3 +88,25 @@
     </p-table>
   </div>
 </div>
+
+<!-- Add Category Dialog -->
+<p-dialog [(visible)]="displayAddDialog" [header]="'CATEGORIES.BTN_CREATE' | translate" [modal]="true" [style]="{width: '500px'}" styleClass="p-fluid border-round-2xl overflow-hidden font-scifi" [draggable]="false" [resizable]="false" appendTo="body">
+    <div class="mt-4">
+        <form [formGroup]="categoryForm" (ngSubmit)="saveCategory()" class="flex flex-column gap-4">
+            <div class="field flex flex-column gap-2">
+                <label for="name" class="text-xs font-bold text-400 uppercase tracking-widest pl-1">Sector Name</label>
+                <input id="name" type="text" pInputText formControlName="name" placeholder="ENTER SECTOR IDENTITY..." class="w-full py-3 px-5 border-round-xl" />
+            </div>
+            
+            <div class="field flex flex-column gap-2">
+                <label for="description" class="text-xs font-bold text-400 uppercase tracking-widest pl-1">Operational Description</label>
+                <textarea id="description" pInputTextarea formControlName="description" rows="4" placeholder="DESCRIBE THE SCOPE OF THIS SECTOR..." class="w-full border-round-xl py-3 px-4 resize-none"></textarea>
+            </div>
+
+            <div class="flex justify-content-end gap-3 mt-4 pt-4 border-top-1 surface-border">
+                <p-button [label]="'PRODUCTS.MODAL.BTN_CANCEL' | translate" icon="pi pi-power-off" [text]="true" (click)="displayAddDialog = false" styleClass="text-400 font-bold tracking-widest hover:text-red-400 transition-colors px-4"></p-button>
+                <p-button [label]="'PRODUCTS.MODAL.BTN_SUBMIT' | translate" icon="pi pi-cloud-upload" [disabled]="categoryForm.invalid" type="submit" styleClass="border-round-xl font-bold px-5 py-3 shadow-4 uppercase tracking-widest" [style]="{'background': 'linear-gradient(135deg, var(--neon-cyan), #007bff)', 'color': '#000', 'border': 'none', 'box-shadow': '0 0 15px rgba(0, 255, 255, 0.4)'}"></p-button>
+            </div>
+        </form>
+    </div>
+</p-dialog>

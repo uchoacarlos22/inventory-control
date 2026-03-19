@@ -1,30 +1,29 @@
-<div class="p-0 font-sans">
+<div class="p-0 font-scifi">
   <!-- Header Section -->
   <div class="flex justify-content-between align-items-center mb-5 mt-2">
     <div>
-      <h1 class="text-3xl font-bold text-900 m-0 mb-2 tracking-tight">{{ 'PRODUCTS.TITLE' | translate }}</h1>
-      <p class="text-600 text-sm m-0">{{ 'PRODUCTS.SUBTITLE' | translate }}</p>
+      <h1 class="text-3xl font-bold text-shadow-1 m-0 mb-2 tracking-tight uppercase">{{ 'PRODUCTS.TITLE' | translate }}</h1>
+      <p class="text-400 text-sm m-0">{{ 'PRODUCTS.SUBTITLE' | translate }}</p>
     </div>
-    <p-button [label]="'PRODUCTS.BTN_ADD' | translate" icon="pi pi-plus" styleClass="border-round-lg font-semibold shadow-1 px-4 bg-primary border-none text-sm py-2"></p-button>
+    <p-button [label]="'PRODUCTS.BTN_ADD' | translate" icon="pi pi-plus" (click)="showAddDialog()" styleClass="border-round-lg font-bold shadow-2 px-4 bg-primary border-none text-sm py-2 uppercase tracking-widest" [style]="{'background': 'linear-gradient(90deg, var(--neon-cyan), var(--neon-blue))', 'color': '#000'}"></p-button>
   </div>
 
   <!-- Filters Area -->
-  <div class="surface-card p-4 border-round-2xl shadow-1 mb-4 bg-white">
+  <div class="glass-panel p-4 border-round-2xl shadow-1 mb-4">
     <div class="flex flex-column md:flex-row justify-content-between gap-3">
-      <div class="p-input-icon-left w-full md:w-6">
-        <i class="pi pi-search text-500 pl-2"></i>
-        <input pInputText type="text" [(ngModel)]="globalFilter" (input)="dt.filterGlobal($any($event.target).value, 'contains')" [placeholder]="'PRODUCTS.SEARCH_PLACEHOLDER' | translate" class="w-full bg-gray-50 border-none px-5 py-3 border-round-xl text-sm transition-colors focus:surface-200" />
-      </div>
+      <span class="flex flex-row align-items-center p-input-icon-left w-full md:w-6">
+        <i class="pi pi-search text-300 pl-2 pr-4"></i>
+        <input pInputText type="text" [(ngModel)]="globalFilter" (input)="dt.filterGlobal($any($event.target).value, 'contains')" [placeholder]="'PRODUCTS.SEARCH_PLACEHOLDER' | translate" class="w-full border-none px-5 py-3 border-round-xl text-sm transition-colors text-100 placeholder-white-alpha-40" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(0, 255, 255, 0.2);" />
+      </span>
       <div class="flex gap-3 overflow-auto pb-1">
-        <p-dropdown [options]="productFacade.categories()" [placeholder]="'PRODUCTS.FILTER_ALL' | translate" styleClass="w-16rem border-none bg-gray-50 border-round-xl py-0 px-1 h-full text-sm flex align-items-center font-medium shadow-none outline-none"></p-dropdown>
-        <p-button [label]="'PRODUCTS.BTN_FILTERS' | translate" icon="pi pi-filter" severity="secondary" [outlined]="true" styleClass="border-round-xl font-medium text-700 bg-white border-300 py-2 px-4 shadow-1 h-full text-sm"></p-button>
-        <p-button icon="pi pi-download" severity="secondary" [outlined]="true" styleClass="border-round-xl bg-white border-300 py-2 shadow-1 h-full px-3"></p-button>
+        <p-dropdown [options]="productFacade.categoryOptions()" optionLabel="label" optionValue="value" appendTo="body" [placeholder]="'PRODUCTS.FILTER_ALL' | translate" styleClass="w-16rem border-none bg-gray-50 border-round-xl py-0 px-1 h-full text-sm flex align-items-center font-medium shadow-none outline-none" [style]="{'background': 'rgba(255,255,255,0.05)', 'border': '1px solid rgba(0,255,255,0.2)'}"></p-dropdown>
+        <p-button icon="pi pi-download" severity="secondary" [outlined]="true" (click)="exportPdf()" styleClass="border-round-xl bg-white border-300 py-2 shadow-1 h-full px-3" [style]="{'background': 'rgba(0,255,255,0.05)', 'border': '1px solid rgba(0,255,255,0.3)', 'color': 'var(--neon-cyan)'}"></p-button>
       </div>
     </div>
   </div>
 
   <!-- Table Area -->
-  <div class="surface-card border-round-2xl shadow-1 overflow-hidden bg-white">
+  <div class="glass-panel border-round-2xl shadow-2 overflow-hidden mb-5">
     <p-table #dt [value]="productFacade.products()" [paginator]="true" [rows]="5" [globalFilterFields]="['title', 'category']" [loading]="productFacade.loading()" styleClass="p-datatable-lg p-datatable-striped" responsiveLayout="scroll">
       
       <ng-template pTemplate="header">
@@ -81,3 +80,41 @@
     </p-table>
   </div>
 </div>
+
+<p-dialog [(visible)]="displayAddDialog" [header]="'PRODUCTS.MODAL.TITLE' | translate" [modal]="true" [style]="{width: '700px'}" styleClass="p-fluid border-round-2xl overflow-hidden font-scifi" [draggable]="false" [resizable]="false" appendTo="body">
+    <div class="mt-4">
+        <form [formGroup]="productForm" (ngSubmit)="saveProduct()" class="flex flex-column gap-4">
+            <!-- Product Identity Group -->
+            <div class="flex flex-column gap-2">
+                <label for="title" class="text-xs font-bold text-400 uppercase tracking-widest pl-1">{{ 'PRODUCTS.MODAL.IDENTITY_LABEL' | translate }}</label>
+                <span class="p-input-icon-left">
+                    <input id="title" type="text" pInputText formControlName="title" [placeholder]="'PRODUCTS.MODAL.IDENTITY_PLACEHOLDER' | translate" class="w-full py-3 px-5 border-round-xl" />
+                </span>
+            </div>
+            
+            <!-- Specs Row -->
+            <div class="flex gap-4">
+                <div class="flex-1 flex flex-column gap-2">
+                    <label for="price" class="text-xs font-bold text-400 uppercase tracking-widest pl-1">{{ 'PRODUCTS.MODAL.PRICE_LABEL' | translate }} (USD)</label>
+                    <p-inputNumber id="price" formControlName="price" mode="decimal" [minFractionDigits]="2" placeholder="0.00" styleClass="w-full" inputStyleClass="py-3 px-4 border-round-xl"></p-inputNumber>
+                </div>
+                <div class="flex-1 flex flex-column gap-2">
+                    <label for="category" class="text-xs font-bold text-400 uppercase tracking-widest pl-1">{{ 'PRODUCTS.MODAL.CATEGORY_LABEL' | translate }}</label>
+                    <p-dropdown id="category" [options]="productFacade.categoryOptions()" formControlName="category" optionLabel="label" optionValue="value" [placeholder]="'PRODUCTS.MODAL.CATEGORY_PLACEHOLDER' | translate" appendTo="body" styleClass="w-full border-round-xl py-1 px-2"></p-dropdown>
+                </div>
+            </div>
+
+            <!-- Core Data -->
+            <div class="flex flex-column gap-2">
+                <label for="description" class="text-xs font-bold text-400 uppercase tracking-widest pl-1">{{ 'PRODUCTS.MODAL.DESC_LABEL' | translate }}</label>
+                <textarea id="description" pInputTextarea formControlName="description" rows="4" [placeholder]="'PRODUCTS.MODAL.DESC_PLACEHOLDER' | translate" class="w-full border-round-xl py-3 px-4 resize-none"></textarea>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex justify-content-end gap-3 mt-4 pt-4 border-top-1 surface-border">
+                <p-button [label]="'PRODUCTS.MODAL.BTN_CANCEL' | translate" icon="pi pi-power-off" [text]="true" (click)="displayAddDialog = false" styleClass="text-400 font-bold tracking-widest hover:text-red-400 transition-colors px-4"></p-button>
+                <p-button [label]="'PRODUCTS.MODAL.BTN_SUBMIT' | translate" icon="pi pi-cloud-upload" [disabled]="productForm.invalid" type="submit" styleClass="border-round-xl font-bold px-5 py-3 shadow-4 uppercase tracking-widest" [style]="{'background': 'linear-gradient(135deg, var(--neon-cyan), #007bff)', 'color': '#000', 'border': 'none', 'box-shadow': '0 0 15px rgba(0, 255, 255, 0.4)'}"></p-button>
+            </div>
+        </form>
+    </div>
+</p-dialog>

@@ -5,8 +5,9 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { TagModule } from 'primeng/tag';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { DialogModule } from 'primeng/dialog';
 
 interface CategoryView {
   name: string;
@@ -22,14 +23,25 @@ interface CategoryView {
 @Component({
   selector: 'app-categories',
   standalone: true,
-  imports: [CommonModule, TableModule, ButtonModule, InputTextModule, TagModule, FormsModule, TranslateModule],
+  imports: [CommonModule, TableModule, ButtonModule, InputTextModule, TagModule, FormsModule, ReactiveFormsModule, TranslateModule, DialogModule],
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.css']
 })
 export class CategoriesComponent implements OnInit {
   public productFacade = inject(ProductFacadeService);
+  private fb = inject(FormBuilder);
+
   globalFilter: string = '';
+  displayAddDialog: boolean = false;
+  categoryForm: FormGroup;
   categoryViews: CategoryView[] = [];
+
+  constructor() {
+    this.categoryForm = this.fb.group({
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      description: ['', Validators.required]
+    });
+  }
 
   ngOnInit() {
     this.productFacade.loadProducts();
@@ -76,5 +88,22 @@ export class CategoriesComponent implements OnInit {
 
   getTotalProducts() {
     return this.categoryViews.reduce((acc, curr) => acc + curr.count, 0);
+  }
+
+  showAddDialog(): void {
+    this.categoryForm.reset();
+    this.displayAddDialog = true;
+  }
+
+  saveCategory(): void {
+    if (this.categoryForm.valid) {
+      const newCatName = this.categoryForm.value.name;
+      this.productFacade.addCategory(newCatName);
+      
+      // Update local view immediately for better UX
+      this.buildCategoryViews();
+      
+      this.displayAddDialog = false;
+    }
   }
 }

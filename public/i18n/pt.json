@@ -162,6 +162,18 @@
       "IN_STOCK": "Em Estoque",
       "LOW_STOCK": "Estoque Baixo",
       "OUT_OF_STOCK": "Fora de Estoque"
+    },
+    "MODAL": {
+      "TITLE": "Adicionar Produto",
+      "IDENTITY_LABEL": "Ativo / Produto",
+      "IDENTITY_PLACEHOLDER": "INSERIR IDENTIDADE DO SISTEMA...",
+      "PRICE_LABEL": "Preço Unitário",
+      "CATEGORY_LABEL": "Setor / Categoria",
+      "CATEGORY_PLACEHOLDER": "SELECIONE O SETOR",
+      "DESC_LABEL": "Especificações Operacionais",
+      "DESC_PLACEHOLDER": "DESCREVA AS FUNÇÕES E PARÂMETROS...",
+      "BTN_CANCEL": "CANCELAR",
+      "BTN_SUBMIT": "CADASTRAR"
     }
   },
   "CATEGORIES": {
