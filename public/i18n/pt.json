@@ -20,9 +20,64 @@
     "FORM_TITLE": "Identifique a Origem",
     "FORM_SUB": "Insira as credenciais para conexão",
     "BTN_SUBMIT": "Inicializar Sequência",
-    "LINK_BYPASS": "Bypass quebrado?",
+    "LINK_FORGOT": "Esqueceu a chave de acesso?",
     "USER_LABEL": "Código de Acesso",
-    "PASS_LABEL": "Chave Biométrica"
+    "PASS_LABEL": "Chave Biométrica",
+    "EXTERNAL_UPLINK": "UPLINK EXTERNO",
+    "GOOGLE_AUTH": "Módulo Google Auth",
+    "NO_ACCOUNT": "Sem registro no sistema?",
+    "LINK_REGISTER": "Solicitar Acesso ao Nó",
+    "LINK_PROTOCOL": "Protocolo de Dados",
+    "LINK_AGREEMENT": "Acordo de Conexão",
+    "LINK_SYSADMIN": "Painel Sysadmin"
+  },
+  "REGISTER": {
+    "SUBTITLE": "CRIAR NOVA IDENTIDADE DE NÓ",
+    "FORM_TITLE": "Registrar Nó",
+    "FORM_SUB": "Inicialize uma nova identidade na rede",
+    "NAME_LABEL": "Designação de Identidade",
+    "NAME_PLACEHOLDER": "Digite seu nome completo...",
+    "EMAIL_LABEL": "Endereço de Rede",
+    "EMAIL_PLACEHOLDER": "Digite seu endereço de email...",
+    "PASS_LABEL": "Chave de Criptografia",
+    "PASS_PLACEHOLDER": "Crie uma senha segura...",
+    "CONFIRM_LABEL": "Confirmar Chave de Criptografia",
+    "CONFIRM_PLACEHOLDER": "Redigite sua senha...",
+    "BTN_SUBMIT": "Inicializar Nó",
+    "HAS_ACCOUNT": "Já possui registro?",
+    "LINK_LOGIN": "Acessar Terminal",
+    "SUCCESS_TITLE": "Nó Registrado com Sucesso",
+    "SUCCESS_MSG": "Sua identidade foi criada. Redirecionando para o gateway de autenticação...",
+    "REDIRECTING": "Redirecionando...",
+    "STRENGTH": {
+      "WEAK": "Criptografia Fraca",
+      "FAIR": "Criptografia Regular",
+      "GOOD": "Criptografia Boa",
+      "STRONG": "Criptografia Forte"
+    },
+    "ERRORS": {
+      "NAME_REQUIRED": "Designação de identidade é obrigatória",
+      "NAME_MIN": "Mínimo de 3 caracteres",
+      "EMAIL_REQUIRED": "Endereço de rede é obrigatório",
+      "EMAIL_INVALID": "Formato de endereço inválido",
+      "PASSWORD_MISMATCH": "As chaves de criptografia não coincidem"
+    }
+  },
+  "FORGOT": {
+    "SUBTITLE": "PROTOCOLO DE RECUPERAÇÃO DE CHAVE",
+    "FORM_TITLE": "Recuperar Chave de Acesso",
+    "FORM_SUB": "Insira seu endereço de rede registrado. Transmitiremos uma sequência de recuperação para redefinir sua chave de criptografia.",
+    "EMAIL_LABEL": "Endereço de Rede",
+    "EMAIL_PLACEHOLDER": "Digite seu email registrado...",
+    "BTN_SUBMIT": "Transmitir Recuperação",
+    "SENT_TITLE": "Recuperação Transmitida",
+    "SENT_MSG": "Uma sequência de recuperação foi enviada para seu endereço de rede. Verifique sua caixa de entrada e siga as instruções para redefinir sua chave de criptografia.",
+    "BACK_LOGIN": "Retornar ao Terminal",
+    "REMEMBER": "Lembrou da sua chave?",
+    "ERRORS": {
+      "EMAIL_REQUIRED": "Endereço de rede é obrigatório",
+      "EMAIL_INVALID": "Formato de endereço inválido"
+    }
   },
   "DASHBOARD": {
     "METRICS": {

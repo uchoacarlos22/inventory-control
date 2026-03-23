@@ -28,7 +28,7 @@
       </div>
 
       <div class="flex justify-content-end w-full">
-        <a class="text-neon font-semibold text-sm cursor-pointer hover:text-100 text-decoration-none transition-colors">{{ 'LOGIN.LINK_BYPASS' | translate }}</a>
+        <a class="text-neon font-semibold text-sm cursor-pointer hover:text-100 text-decoration-none transition-colors" routerLink="/forgot-password">{{ 'LOGIN.LINK_FORGOT' | translate }}</a>
       </div>
 
       @if (authFacade.error()) {
@@ -45,11 +45,11 @@
       </p-button>
 
       <p-divider align="center" styleClass="my-4 border-white-alpha-20">
-          <span class="text-400 text-xs font-semibold uppercase tracking-widest" style="background: var(--glass-bg);">EXTERNAL UPLINK</span>
+          <span class="text-400 text-xs font-semibold uppercase tracking-widest" style="background: var(--glass-bg);">{{ 'LOGIN.EXTERNAL_UPLINK' | translate }}</span>
       </p-divider>
 
       <p-button 
-        label="Google Auth.Module" 
+        [label]="'LOGIN.GOOGLE_AUTH' | translate" 
         icon="pi pi-google" 
         [outlined]="true"
         severity="secondary"
@@ -63,12 +63,12 @@
   <!-- Footer Links -->
   <div class="text-center mt-6">
     <p class="text-400 text-sm mb-4">
-      Data-slate missing? <a class="text-neon font-bold cursor-pointer hover:underline">Request Node</a>
+      {{ 'LOGIN.NO_ACCOUNT' | translate }} <a class="text-neon font-bold cursor-pointer hover:underline" routerLink="/register">{{ 'LOGIN.LINK_REGISTER' | translate }}</a>
     </p>
     <div class="flex gap-4 justify-content-center text-xs text-500 font-medium">
-      <a class="cursor-pointer hover:text-100 transition-colors">Data Protocol</a>
-      <a class="cursor-pointer hover:text-100 transition-colors">Link Agreement</a>
-      <a class="cursor-pointer hover:text-100 transition-colors">Sysadmin Deck</a>
+      <a class="cursor-pointer hover:text-100 transition-colors">{{ 'LOGIN.LINK_PROTOCOL' | translate }}</a>
+      <a class="cursor-pointer hover:text-100 transition-colors">{{ 'LOGIN.LINK_AGREEMENT' | translate }}</a>
+      <a class="cursor-pointer hover:text-100 transition-colors">{{ 'LOGIN.LINK_SYSADMIN' | translate }}</a>
     </div>
   </div>
 

@@ -1,13 +1,18 @@
-<div class="p-0 font-sans">
+<div class="p-0 font-sans min-h-screen">
   
+  <!-- Header / Breadcrumbs -->
   <div class="flex flex-column mb-5 mt-2">
     <div class="flex justify-content-between align-items-center mb-4">
-      <div class="text-sm text-500 font-medium mb-3">{{ 'SUPPORT.SECTOR' | translate }} / <span class="text-900">{{ 'MENU.SUPPORT' | translate }}</span></div>
+      <div class="text-xs font-bold text-400 uppercase tracking-widest pl-1">
+        {{ 'SUPPORT.SECTOR' | translate }} <span class="mx-2 text-600">/</span> <span class="text-neon">{{ 'MENU.SUPPORT' | translate }}</span>
+      </div>
     </div>
     
     <div>
-      <h1 class="text-3xl font-bold text-900 m-0 mb-2 tracking-tight">{{ 'SUPPORT.TITLE' | translate }}</h1>
-      <p class="text-600 text-sm m-0">{{ 'SUPPORT.SUBTITLE' | translate }}</p>
+      <h1 class="text-4xl font-scifi font-bold text-100 m-0 mb-2 tracking-tight uppercase text-neon">
+        {{ 'SUPPORT.TITLE' | translate }}
+      </h1>
+      <p class="text-400 text-sm m-0 tracking-wide uppercase opacity-80">{{ 'SUPPORT.SUBTITLE' | translate }}</p>
     </div>
   </div>
 
@@ -16,81 +21,84 @@
     <!-- Contact Form (Left) -->
     <div class="col-12 xl:col-5 flex flex-column gap-4">
       
-      <div class="surface-card p-5 border-round-2xl shadow-1 bg-white h-full">
-        <div class="flex align-items-center gap-3 mb-5">
-          <div class="bg-indigo-50 border-round-lg flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-            <i class="pi pi-envelope text-primary text-xl"></i>
+      <div class="glass-panel p-5 border-round-2xl shadow-4 h-full" style="background: rgba(10, 15, 30, 0.4); border: 1px solid rgba(0, 255, 255, 0.15);">
+        <div class="flex align-items-center gap-3 mb-5 pb-3 border-bottom-1 surface-border">
+          <div class="glass-active border-round-lg flex align-items-center justify-content-center" style="width: 48px; height: 48px; box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);">
+            <i class="pi pi-envelope text-neon text-xl"></i>
           </div>
-          <h2 class="m-0 text-xl font-bold text-900">{{ 'SUPPORT.CONTACT.TITLE' | translate }}</h2>
+          <h2 class="m-0 text-xl font-scifi font-bold text-100 uppercase tracking-widest">{{ 'SUPPORT.CONTACT.TITLE' | translate }}</h2>
         </div>
 
-        <p class="text-600 text-sm mb-5 line-height-3">
+        <p class="text-400 text-sm mb-5 line-height-3 italic opacity-80">
           {{ 'SUPPORT.CONTACT.DESC' | translate }}
         </p>
 
-        <div class="flex flex-column gap-4">
+        <div class="flex flex-column gap-5">
           <div class="flex flex-column gap-2">
-            <label class="font-medium text-700 text-sm">{{ 'SUPPORT.CONTACT.SUBJECT' | translate }}</label>
-            <input pInputText type="text" [(ngModel)]="contactForm.subject" [placeholder]="'SUPPORT.CONTACT.SUBJECT_PLACEHOLDER' | translate" class="border-round-lg py-2" />
+            <label class="text-xs font-bold text-400 uppercase tracking-widest pl-1">{{ 'SUPPORT.CONTACT.SUBJECT' | translate }}</label>
+            <input pInputText type="text" [(ngModel)]="contactForm.subject" [placeholder]="'SUPPORT.CONTACT.SUBJECT_PLACEHOLDER' | translate" class="border-round-2xl py-4 px-4 text-base font-bold" [style]="{'background': 'rgba(255,255,255,0.05)', 'border': '2px solid rgba(0,255,255,0.2)', 'height': '64px', 'color': '#fff'}" />
           </div>
 
           <div class="flex flex-column gap-2 mb-2">
-            <label class="font-medium text-700 text-sm">{{ 'SUPPORT.CONTACT.MESSAGE' | translate }}</label>
-            <textarea pInputTextarea [(ngModel)]="contactForm.message" rows="6" [placeholder]="'SUPPORT.CONTACT.MESSAGE_PLACEHOLDER' | translate" class="border-round-lg py-2" style="resize: none;"></textarea>
+            <label class="text-xs font-bold text-400 uppercase tracking-widest pl-1">{{ 'SUPPORT.CONTACT.MESSAGE' | translate }}</label>
+            <textarea pInputTextarea [(ngModel)]="contactForm.message" rows="6" [placeholder]="'SUPPORT.CONTACT.MESSAGE_PLACEHOLDER' | translate" class="border-round-2xl py-4 px-4 text-base font-bold" [style]="{'background': 'rgba(255,255,255,0.05)', 'border': '2px solid rgba(0,255,255,0.2)', 'resize': 'none', 'color': '#fff', 'padding': '1.5rem !important'}"></textarea>
           </div>
 
-          <p-button [label]="'SUPPORT.CONTACT.BTN_SEND' | translate" icon="pi pi-send" (onClick)="sendMessage()" [disabled]="!contactForm.subject || !contactForm.message" styleClass="w-full border-round-lg font-bold py-3 bg-primary border-none shadow-1"></p-button>
+          <p-button [label]="'SUPPORT.CONTACT.BTN_SEND' | translate" icon="pi pi-send" (onClick)="sendMessage()" [disabled]="!contactForm.subject || !contactForm.message" styleClass="w-full border-round-2xl font-bold py-4 shadow-4 uppercase tracking-widest text-900 transition-all hover:scale-105" [style]="{'background': 'linear-gradient(90deg, var(--neon-cyan), var(--neon-blue))', 'border': 'none', 'padding': '1.5rem', 'font-size': '1rem'}"></p-button>
         </div>
 
-        <div class="mt-6 border-top-1 surface-border pt-4">
-          <span class="block font-bold text-900 mb-2">{{ 'SUPPORT.CONTACT.DIRECT' | translate }}</span>
-          <div class="flex align-items-center gap-2 mb-2">
-            <i class="pi pi-phone text-500"></i>
-            <span class="text-600 text-sm">{{ 'SUPPORT.CONTACT.PHONE' | translate }}</span>
+        <div class="mt-6 pt-4 border-top-1 border-white-alpha-10">
+          <span class="block font-scifi font-bold text-neon mb-4 tracking-widest uppercase text-xs">{{ 'SUPPORT.CONTACT.DIRECT' | translate }}</span>
+          <div class="flex align-items-center gap-3 mb-3 text-400">
+            <i class="pi pi-phone text-neon opacity-70"></i>
+            <span class="text-sm font-medium">{{ 'SUPPORT.CONTACT.PHONE' | translate }}</span>
           </div>
-          <div class="flex align-items-center gap-2">
-            <i class="pi pi-calendar text-500"></i>
-            <span class="text-600 text-sm">{{ 'SUPPORT.CONTACT.HOURS' | translate }}</span>
+          <div class="flex align-items-center gap-3 text-400">
+            <i class="pi pi-calendar text-neon opacity-70"></i>
+            <span class="text-sm font-medium">{{ 'SUPPORT.CONTACT.HOURS' | translate }}</span>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- FAQ Accordion (Right) -->
+    <!-- FAQ Accordion (Right) — Futuristic Custom -->
     <div class="col-12 xl:col-7">
-      <div class="surface-card p-5 border-round-2xl shadow-1 bg-white h-full">
-        <div class="flex align-items-center gap-3 mb-5">
-          <i class="pi pi-comments text-primary text-2xl"></i>
-          <h2 class="m-0 text-xl font-bold text-900">Frequently Asked Questions</h2>
+      <div class="glass-panel p-5 border-round-2xl shadow-4 h-full" style="background: rgba(10, 15, 30, 0.4); border: 1px solid rgba(0, 255, 255, 0.15);">
+        <div class="flex align-items-center gap-3 mb-5 pb-3 border-bottom-1 surface-border">
+          <div class="glass-active border-round-lg flex align-items-center justify-content-center" style="width: 48px; height: 48px; box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);">
+            <i class="pi pi-comments text-neon text-xl"></i>
+          </div>
+          <h2 class="m-0 text-xl font-scifi font-bold text-100 uppercase tracking-widest">{{ 'SUPPORT.FAQ.TITLE' | translate }}</h2>
         </div>
 
-        <p-accordion [multiple]="true" styleClass="mt-3 custom-accordion">
-          
-          <p-accordionTab [header]="'SUPPORT.FAQ.Q1' | translate">
-            <p class="m-0 text-600 line-height-3 text-sm">
-              {{ 'SUPPORT.FAQ.A1' | translate }}
-            </p>
-          </p-accordionTab>
-          
-          <p-accordionTab [header]="'SUPPORT.FAQ.Q2' | translate">
-            <p class="m-0 text-600 line-height-3 text-sm">
-              {{ 'SUPPORT.FAQ.A2' | translate }}
-            </p>
-          </p-accordionTab>
+        <!-- Custom Futuristic Accordion -->
+        <div class="faq-accordion flex flex-column gap-3 mt-3">
 
-          <p-accordionTab [header]="'SUPPORT.FAQ.Q3' | translate">
-            <p class="m-0 text-600 line-height-3 text-sm">
-              {{ 'SUPPORT.FAQ.A3' | translate }}
-            </p>
-          </p-accordionTab>
+          @for (item of faqItems; track item.id; let i = $index) {
+            <div class="faq-item" [class.faq-item--active]="item.open" (click)="toggleFaq(item.id)">
 
-          <p-accordionTab [header]="'SUPPORT.FAQ.Q4' | translate">
-            <p class="m-0 text-600 line-height-3 text-sm">
-              {{ 'SUPPORT.FAQ.A4' | translate }}
-            </p>
-          </p-accordionTab>
+              <!-- Header -->
+              <div class="faq-header">
+                <div class="faq-index">
+                  <span class="faq-index-number">{{ (i + 1).toString().padStart(2, '0') }}</span>
+                </div>
+                <span class="faq-question">{{ item.questionKey | translate }}</span>
+                <div class="faq-toggle-icon">
+                  <i class="pi" [class.pi-chevron-down]="!item.open" [class.pi-chevron-up]="item.open"></i>
+                </div>
+              </div>
 
-        </p-accordion>
+              <!-- Expandable Body -->
+              @if (item.open) {
+                <div class="faq-body">
+                  <div class="faq-answer-line"></div>
+                  <p class="faq-answer">{{ item.answerKey | translate }}</p>
+                </div>
+              }
+            </div>
+          }
+
+        </div>
       </div>
     </div>
 

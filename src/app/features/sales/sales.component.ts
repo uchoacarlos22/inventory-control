@@ -8,6 +8,11 @@ import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { TagModule } from 'primeng/tag';
 import { TranslateModule } from '@ngx-translate/core';
+import { TooltipModule } from 'primeng/tooltip';
+import { DialogModule } from 'primeng/dialog';
+import { InputNumberModule } from 'primeng/inputnumber';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
 
 interface SaleTransaction {
   id: number;
@@ -23,7 +28,7 @@ interface SaleTransaction {
 @Component({
   selector: 'app-sales',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, TableModule, ButtonModule, InputTextModule, DropdownModule, TagModule, CurrencyPipe, TranslateModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, TableModule, ButtonModule, InputTextModule, DropdownModule, TagModule, CurrencyPipe, TranslateModule, TooltipModule, DialogModule, InputNumberModule],
   templateUrl: './sales.component.html',
   styleUrls: ['./sales.component.css']
 })
@@ -39,6 +44,19 @@ export class SalesComponent implements OnInit {
   transactions: SaleTransaction[] = [];
   productsList: any[] = [];
   estimatedTotal = 0;
+  displayAddDialog = false;
+  globalFilter = '';
+  
+  minValue: number | undefined;
+  maxValue: number | undefined;
+  selectedStatus: string | null = null;
+
+  statusOptions = [
+    { label: 'ALL STATUS', value: null },
+    { label: 'COMPLETED', value: 'Completed' },
+    { label: 'PENDING', value: 'Pending' },
+    { label: 'CANCELED', value: 'Canceled' }
+  ];
 
   ngOnInit() {
     this.productFacade.loadProducts();
@@ -97,6 +115,38 @@ export class SalesComponent implements OnInit {
       this.transactions.unshift(newTx);
       this.saleForm.reset({ quantity: 1 });
       this.estimatedTotal = 0;
+      this.displayAddDialog = false;
     }
+  }
+
+  showAddDialog() {
+    this.displayAddDialog = true;
+  }
+
+  exportPdf(): void {
+    const doc = new jsPDF('p', 'mm', 'a4');
+    const head = [['Product', 'Date', 'Time', 'Qty', 'Total', 'Status']];
+    const data = this.transactions.map(tx => [
+      tx.productName,
+      tx.date,
+      tx.time,
+      tx.qty,
+      `$${tx.total.toFixed(2)}`,
+      tx.status
+    ]);
+
+    doc.setFontSize(18);
+    doc.text('Sales Transaction Report', 14, 22);
+    
+    autoTable(doc, {
+      head: head,
+      body: data,
+      startY: 30,
+      theme: 'grid',
+      headStyles: { fillColor: [0, 123, 255] },
+      styles: { fontSize: 9 }
+    });
+
+    doc.save('sales-report.pdf');
   }
 }

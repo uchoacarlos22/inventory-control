@@ -169,10 +169,16 @@ html, body {
     border-color: rgba(0, 255, 255, 0.5) !important;
     box-shadow: 0 0 5px rgba(0, 255, 255, 0.2) !important;
 }
-.p-inputtext:enabled:focus, .p-dropdown:not(.p-disabled).p-focus {
+.p-inputtext:enabled:focus, .p-dropdown:not(.p-disabled).p-focus, .p-textarea:focus {
     border-color: var(--neon-cyan) !important;
     box-shadow: 0 0 10px rgba(0, 255, 255, 0.4) !important;
     outline: 0 none;
+}
+.p-textarea {
+    background: rgba(5, 10, 20, 0.5) !important;
+    border: 1px solid rgba(0, 255, 255, 0.2) !important;
+    color: #e2e8f0 !important;
+    padding: 1rem !important;
 }
 .p-dropdown-panel {
     background: rgba(10, 15, 30, 0.95) !important;
@@ -193,6 +199,90 @@ html, body {
 }
 .p-dropdown .p-dropdown-trigger {
     color: var(--neon-cyan) !important;
+}
+.p-dropdown-panel .p-dropdown-header, .p-select-overlay .p-select-header {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.2) !important;
+    padding: 0.75rem 1rem !important;
+}
+.p-dropdown-panel .p-dropdown-header .p-dropdown-filter-container .p-inputtext, .p-select-overlay .p-select-filter {
+    background: rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(0, 255, 255, 0.3) !important;
+    color: #fff !important;
+}
+
+/* ========================================= */
+/* 📂 SCI-FI SELECT (P-SELECT / P-DROPDOWN)  */
+/* ========================================= */
+
+.p-select, .p-dropdown {
+    height: 64px !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 2px solid rgba(0, 255, 255, 0.3) !important;
+    border-radius: 16px !important;
+    color: #fff !important;
+    transition: all 0.3s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    padding: 0 !important;
+}
+
+.p-select:hover, .p-dropdown:hover {
+    border-color: var(--neon-cyan) !important;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.2) !important;
+}
+
+.p-select-label, .p-dropdown-label {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+    font-weight: 800 !important;
+    color: #fff !important;
+    font-size: 1rem !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.p-select-dropdown, .p-dropdown-trigger {
+    color: var(--neon-cyan) !important;
+    padding-right: 1.5rem !important;
+}
+
+/* PrimeNG 18/19 Select Overrides */
+.p-select-panel, .p-select-overlay, .scifi-dropdown-panel {
+    background: rgba(10, 15, 30, 0.95) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid var(--neon-cyan) !important;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.3), 0 10px 40px rgba(0, 0, 0, 0.8) !important;
+    border-radius: 12px !important;
+}
+.p-select-list, .p-dropdown-items {
+    padding: 0.5rem !important;
+}
+.p-select-option, .p-dropdown-item {
+    color: #cbd5e1 !important;
+    margin: 2px 0 !important;
+    border-radius: 8px !important;
+    padding: 0.75rem 1rem !important;
+    transition: all 0.2s ease !important;
+}
+.p-select-option:not(.p-highlight):not(.p-disabled):hover, .p-dropdown-item:not(.p-highlight):not(.p-disabled):hover {
+    background: rgba(0, 255, 255, 0.1) !important;
+    color: var(--neon-cyan) !important;
+    box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.05);
+}
+.p-select-option.p-highlight, .p-dropdown-item.p-highlight {
+    background: rgba(0, 255, 255, 0.3) !important;
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    border: 1px solid rgba(0, 255, 255, 0.5) !important;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.1) !important;
+}
+.p-select-option:not(.p-highlight):not(.p-disabled).p-focus, .p-dropdown-item:not(.p-highlight):not(.p-disabled).p-focus {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: var(--neon-cyan) !important;
+}
+.p-select-option.p-highlight.p-focus, .p-dropdown-item.p-highlight.p-focus {
+    background: rgba(0, 255, 255, 0.4) !important;
 }
 
 /* ========================================= */
@@ -314,4 +404,55 @@ h1, h2, h3, h4, .font-bold {
 .p-tag-secondary {
     border: 1px solid #94a3b8 !important;
     color: #e2e8f0 !important;
+}
+
+/* ========================================= */
+/* 📂 SCI-FI ACCORDION (P-ACCORDION)         */
+/* ========================================= */
+
+.p-accordion, .p-accordion-panel {
+    background: transparent !important;
+    border: none !important;
+}
+
+.p-accordionheader, .p-accordion .p-accordion-header .p-accordion-header-link {
+    background: rgba(10, 15, 30, 0.6) !important;
+    border: none !important;
+    color: var(--neon-cyan) !important;
+    font-family: 'Orbitron', sans-serif !important;
+    letter-spacing: 1px;
+    padding: 1.25rem 1.5rem !important;
+    transition: all 0.3s ease !important;
+    border-radius: 12px !important;
+    margin-bottom: 0.5rem !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6) !important;
+}
+
+.p-accordionheader:hover, .p-accordion .p-accordion-header:not(.p-disabled):hover .p-accordion-header-link {
+    border-color: var(--neon-cyan) !important;
+    background: rgba(0, 255, 255, 0.1) !important;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.2) !important;
+}
+
+.p-accordionheader.p-highlight, .p-accordion .p-accordion-header:not(.p-disabled).p-highlight .p-accordion-header-link {
+    background: rgba(0, 255, 255, 0.15) !important;
+    border-color: var(--neon-cyan) !important;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2) !important;
+}
+
+.p-accordioncontent, .p-accordioncontent-content, .p-accordion .p-accordion-content {
+    background: rgba(5, 10, 20, 0.7) !important;
+    border: none !important;
+    color: #cbd5e1 !important;
+    padding: 1.5rem !important;
+    border-bottom-left-radius: 12px !important;
+    border-bottom-right-radius: 12px !important;
+    margin-top: -0.85rem !important;
+    margin-bottom: 1.5rem !important;
+    backdrop-filter: blur(20px) !important;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.6) !important;
+}
+
+.p-accordion-toggle-icon, .p-accordionheader .pi {
+    color: var(--neon-cyan) !important;
 }

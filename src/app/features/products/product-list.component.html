@@ -9,15 +9,28 @@
   </div>
 
   <!-- Filters Area -->
-  <div class="glass-panel p-4 border-round-2xl shadow-1 mb-4">
-    <div class="flex flex-column md:flex-row justify-content-between gap-3">
-      <span class="flex flex-row align-items-center p-input-icon-left w-full md:w-6">
-        <i class="pi pi-search text-300 pl-2 pr-4"></i>
-        <input pInputText type="text" [(ngModel)]="globalFilter" (input)="dt.filterGlobal($any($event.target).value, 'contains')" [placeholder]="'PRODUCTS.SEARCH_PLACEHOLDER' | translate" class="w-full border-none px-5 py-3 border-round-xl text-sm transition-colors text-100 placeholder-white-alpha-40" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(0, 255, 255, 0.2);" />
-      </span>
-      <div class="flex gap-3 overflow-auto pb-1">
-        <p-dropdown [options]="productFacade.categoryOptions()" optionLabel="label" optionValue="value" appendTo="body" [placeholder]="'PRODUCTS.FILTER_ALL' | translate" styleClass="w-16rem border-none bg-gray-50 border-round-xl py-0 px-1 h-full text-sm flex align-items-center font-medium shadow-none outline-none" [style]="{'background': 'rgba(255,255,255,0.05)', 'border': '1px solid rgba(0,255,255,0.2)'}"></p-dropdown>
-        <p-button icon="pi pi-download" severity="secondary" [outlined]="true" (click)="exportPdf()" styleClass="border-round-xl bg-white border-300 py-2 shadow-1 h-full px-3" [style]="{'background': 'rgba(0,255,255,0.05)', 'border': '1px solid rgba(0,255,255,0.3)', 'color': 'var(--neon-cyan)'}"></p-button>
+  <div class="glass-panel p-4 border-round-2xl shadow-4 mb-4" style="background: rgba(10, 15, 30, 0.4); border: 1px solid rgba(0, 255, 255, 0.15);">
+    <div class="flex flex-column lg:flex-row justify-content-between align-items-end gap-3">
+      <!-- Search -->
+      <div class="flex flex-column gap-2 flex-grow-1 w-full lg:w-auto">
+        <span class="text-xs font-bold text-400 uppercase tracking-widest pl-1">Quantum Search</span>
+        <span class="flex flex-row align-items-center w-full">
+          <i class="pi pi-search text-neon pl-4 pr-5 text-xl"></i>
+          <input pInputText type="text" [(ngModel)]="globalFilter" (input)="dt.filterGlobal($any($event.target).value, 'contains')" [placeholder]="'Query Catalog...'" class="w-full border-round-2xl py-4 pl-7 pr-5 text-base text-100 placeholder-white-alpha-40 outline-none font-bold" style="background: rgba(255, 255, 255, 0.05); border: 2px solid rgba(0, 255, 255, 0.3); height: 64px; box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);" />
+        </span>
+      </div>
+
+      <!-- Filters Row -->
+      <div class="flex flex-row gap-3 w-full lg:w-auto overflow-auto pb-1">
+        <div class="flex flex-column gap-2 min-w-16rem">
+          <span class="text-xs font-bold text-400 uppercase tracking-widest pl-1">Sector Class</span>
+          <p-dropdown [options]="productFacade.categoryOptions()" optionLabel="label" optionValue="value" appendTo="body" [placeholder]="'ALL CATEGORIES'" styleClass="w-full border-round-2xl py-3 px-4 text-base font-bold" [style]="{'background': 'rgba(255,255,255,0.05)', 'border': '2px solid rgba(0,255,255,0.3)', 'height': '64px'}" panelStyleClass="scifi-dropdown-panel"></p-dropdown>
+        </div>
+
+        <div class="flex flex-column gap-2">
+          <span class="text-xs font-bold text-400 uppercase tracking-widest pl-1">Report</span>
+          <p-button icon="pi pi-download" (click)="exportPdf()" styleClass="border-round-2xl font-bold py-4 px-4 shadow-4 transition-all hover:scale-110" [style]="{'background': 'rgba(0,255,255,0.1)', 'border': '2px solid rgba(0,255,255,0.4)', 'height': '64px', 'color': 'var(--neon-cyan)', 'min-width': '64px'}"></p-button>
+        </div>
       </div>
     </div>
   </div>

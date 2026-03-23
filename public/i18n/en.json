@@ -20,9 +20,64 @@
     "FORM_TITLE": "Identify Source",
     "FORM_SUB": "Please input credentials to link",
     "BTN_SUBMIT": "Initialize Sequence",
-    "LINK_BYPASS": "Bypass link broken?",
+    "LINK_FORGOT": "Forgot access key?",
     "USER_LABEL": "Access Code",
-    "PASS_LABEL": "Biometric Key"
+    "PASS_LABEL": "Biometric Key",
+    "EXTERNAL_UPLINK": "EXTERNAL UPLINK",
+    "GOOGLE_AUTH": "Google Auth.Module",
+    "NO_ACCOUNT": "No data-slate registered?",
+    "LINK_REGISTER": "Request Node Access",
+    "LINK_PROTOCOL": "Data Protocol",
+    "LINK_AGREEMENT": "Link Agreement",
+    "LINK_SYSADMIN": "Sysadmin Deck"
+  },
+  "REGISTER": {
+    "SUBTITLE": "CREATE NEW NODE IDENTITY",
+    "FORM_TITLE": "Register Node",
+    "FORM_SUB": "Initialize a new identity in the network",
+    "NAME_LABEL": "Identity Designation",
+    "NAME_PLACEHOLDER": "Enter your full name...",
+    "EMAIL_LABEL": "Network Address",
+    "EMAIL_PLACEHOLDER": "Enter your email address...",
+    "PASS_LABEL": "Encryption Key",
+    "PASS_PLACEHOLDER": "Create a secure password...",
+    "CONFIRM_LABEL": "Confirm Encryption Key",
+    "CONFIRM_PLACEHOLDER": "Re-enter your password...",
+    "BTN_SUBMIT": "Initialize Node",
+    "HAS_ACCOUNT": "Already have a data-slate?",
+    "LINK_LOGIN": "Access Terminal",
+    "SUCCESS_TITLE": "Node Registered Successfully",
+    "SUCCESS_MSG": "Your identity has been created. Redirecting to the authentication gateway...",
+    "REDIRECTING": "Redirecting...",
+    "STRENGTH": {
+      "WEAK": "Weak Encryption",
+      "FAIR": "Fair Encryption",
+      "GOOD": "Good Encryption",
+      "STRONG": "Strong Encryption"
+    },
+    "ERRORS": {
+      "NAME_REQUIRED": "Identity designation is required",
+      "NAME_MIN": "Minimum 3 characters required",
+      "EMAIL_REQUIRED": "Network address is required",
+      "EMAIL_INVALID": "Invalid network address format",
+      "PASSWORD_MISMATCH": "Encryption keys do not match"
+    }
+  },
+  "FORGOT": {
+    "SUBTITLE": "KEY RECOVERY PROTOCOL",
+    "FORM_TITLE": "Recover Access Key",
+    "FORM_SUB": "Enter your registered network address. We will transmit a recovery sequence to reset your encryption key.",
+    "EMAIL_LABEL": "Network Address",
+    "EMAIL_PLACEHOLDER": "Enter your registered email...",
+    "BTN_SUBMIT": "Transmit Recovery",
+    "SENT_TITLE": "Recovery Transmitted",
+    "SENT_MSG": "A recovery sequence has been sent to your network address. Check your inbox and follow the instructions to reset your encryption key.",
+    "BACK_LOGIN": "Return to Terminal",
+    "REMEMBER": "Remembered your key?",
+    "ERRORS": {
+      "EMAIL_REQUIRED": "Network address is required",
+      "EMAIL_INVALID": "Invalid network address format"
+    }
   },
   "DASHBOARD": {
     "METRICS": {
